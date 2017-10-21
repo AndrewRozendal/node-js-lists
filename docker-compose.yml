@@ -1,0 +1,15 @@
+version: "3"
+services:
+  node:
+    container_name: node
+    build: ./node
+    image: arozendal/rozendal-hauling
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/home/node/app
+    command: "npm start"

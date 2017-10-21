@@ -1,0 +1,15 @@
+ICS 211 Project Description
+
+Short Summary
+Andrew Rozendal has decided to get into the dump truck business - Rozendal Hauling Co.
+Rozendal Hauling Co. is a small local dump truck rental company.  It rents dump
+trucks with their drivers.  It has a dozen dump trucks available for rental. 
+Visiters to the site can see trucks available for rental.  There are details on
+the size of each truck, the costs, and the duration available.  Visiters can then
+reserve a truck for a period of time.
+
+Pages Required Based on the Summary
+Home Page - A screen that lists trucks
+Trucks Page - A screen that shows details about each truck
+Reservations Page - A reservation screen
+AboutUs Page - Contact information and history
