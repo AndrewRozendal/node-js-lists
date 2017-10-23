@@ -3,7 +3,7 @@ services:
   node:
     container_name: node
     build: ./node
-    image: arozendal/rozendal-hauling
+    image: arozendal/rozendal-lists
     user: "node"
     working_dir: /home/node/app
     environment:
