@@ -1,10 +1,26 @@
 /* Google Fonts https://fonts.google.com */
 @import url('https://fonts.googleapis.com/css?family=Cabin|Pacifico');
 
+body{
+  padding-bottom: 2em;
+}
+
+.main-content {
+  padding: 1em;
+}
+
 h1{
   font-family: 'Pacifico', cursive;  
 }
 
 p{
   font-family: 'Cabin', sans-serif;  
+}
+
+.ca-footer-text {
+  font-family: 'Pacifico', cursive;
+}
+
+.bg-light-blue{
+  background-color: #45ecec;
 }
