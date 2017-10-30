@@ -10,21 +10,12 @@ Paper #d5d5d5
 
 /* Google Fonts https://fonts.google.com */
 @import url('https://fonts.googleapis.com/css?family=Cabin|Pacifico');
-html, body {
-  height: 100%; /* Required for .main-content % fill */
-}
 
 body{
-  padding-bottom: 2em;
-}
-
-.main-content {
-  padding: 1em;
   background-color: #96858f;
-  height: 97%;
 }
 
-h1{
+h1, h2{
   font-family: 'Pacifico', cursive;  
 }
 
@@ -34,16 +25,8 @@ p{
 
 .ca-footer-text {
   font-family: 'Pacifico', cursive;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
-  padding-left: 0;
-  padding-right: 0; /* top, right, bottom, left */
 }
 
 .nav-header-bg{
   background-color: #d5d5d5;
-}
-
-i{
-  padding-right: 0.5em;
 }

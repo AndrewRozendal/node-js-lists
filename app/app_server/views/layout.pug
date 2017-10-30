@@ -10,13 +10,13 @@ html
     //- shrink-to-fit=no is needed for the Safari browser
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
      
-  body  
+  body.pb-5  
     //- My attempt: Doesnt work...
-    nav.navbar.navbar-expand-md.navbar-light.nav-header-bg
+    nav.navbar.navbar-expand-lg.navbar-light.nav-header-bg
       .container-fluid
         //- book icon - see http://fontawesome.io/icons/
-        i.fa.fa-book.fa-lg(aria-hidden='true')
         a.navbar-brand(href='/')
+          i.pl-2.brand-icon.fa.fa-book.fa-lg(aria-hidden='true')
           .brand-text.float-left Rozendal Book Lists
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#mainNavBar')
           span.navbar-toggler-icon
@@ -28,14 +28,14 @@ html
               a.nav-link(href='/about') About Us
             li.nav-item
               a.nav-link(href='#') Sign In
-            form.search-form.navbar-nav.ml-auto
+            form.search-form.navbar-nav
               input.form-control(type='text', placeholder='Search for a Book')
               button.search-btn(type='submit') Search
 
-    .main-content
+    .main-content.p-3
       block content
 
-    footer.fixed-bottom.nav-header-bg.text-right
+    footer.fixed-bottom.nav-header-bg.text-right.py-2
       .container-fluid
         .ca-footer-text &copy;2017 Andrew Rozendal
     //- Scripts required for twitter bootstrap
