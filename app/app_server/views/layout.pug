@@ -12,12 +12,12 @@ html
      
   body  
     //- My attempt: Doesnt work...
-    nav.navbar.navbar-expand-md.navbar-light.bg-light-blue
-      .container
+    nav.navbar.navbar-expand-md.navbar-light.nav-header-bg
+      .container-fluid
+        //- book icon - see http://fontawesome.io/icons/
+        i.fa.fa-book.fa-lg(aria-hidden='true')
         a.navbar-brand(href='/')
           .brand-text.float-left Rozendal Book Lists
-          //- book icon - see http://fontawesome.io/icons/
-          i.fa.fa-book.fa-lg(aria-hidden='true') 
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#mainNavBar')
           span.navbar-toggler-icon
         .collapse.navbar-collapse#mainNavBar
@@ -26,12 +26,17 @@ html
               a.nav-link(href='/reading-list') My Reading List
             li.nav-item
               a.nav-link(href='/about') About Us
+            li.nav-item
+              a.nav-link(href='#') Sign In
+            form.search-form.navbar-nav.ml-auto
+              input.form-control(type='text', placeholder='Search for a Book')
+              button.search-btn(type='submit') Search
 
     .main-content
       block content
 
-    footer.fixed-bottom.bg-light-blue.text-right
-      .container
+    footer.fixed-bottom.nav-header-bg.text-right
+      .container-fluid
         .ca-footer-text &copy;2017 Andrew Rozendal
     //- Scripts required for twitter bootstrap
     script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")

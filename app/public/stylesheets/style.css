@@ -1,5 +1,18 @@
+/* Colour Theme
+Number 6
+https://designschool.canva.com/blog/website-color-schemes/
+
+Dusty #96858f
+Lavendar #6d7993
+Overcast #9099a2
+Paper #d5d5d5
+
+
 /* Google Fonts https://fonts.google.com */
 @import url('https://fonts.googleapis.com/css?family=Cabin|Pacifico');
+html, body {
+  height: 100%; /* Required for .main-content % fill */
+}
 
 body{
   padding-bottom: 2em;
@@ -7,6 +20,8 @@ body{
 
 .main-content {
   padding: 1em;
+  background-color: #96858f;
+  height: 97%;
 }
 
 h1{
@@ -19,8 +34,16 @@ p{
 
 .ca-footer-text {
   font-family: 'Pacifico', cursive;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-left: 0;
+  padding-right: 0; /* top, right, bottom, left */
 }
 
-.bg-light-blue{
-  background-color: #45ecec;
+.nav-header-bg{
+  background-color: #d5d5d5;
+}
+
+i{
+  padding-right: 0.5em;
 }
