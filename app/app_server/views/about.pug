@@ -20,25 +20,54 @@ block content
     .container.picture.py-3.px-5.col-12.col-md-4
       img(src="/example.jpg", alt="Picture goes here")
 
-  .row.col-12.col-md-8
-    .card
-      .card-body
-        h3.card-title.pb-3 Contact Us
-        form(name='contact', action='/thanks', method='post')
-          .form-group.row
-            label.col-form-label.col-sm-3(for='email') Email:
-            .col-sm-6
-              input#email(type='email', name='email', required, placeholder='Your Email Address')
-          .form-group.row
-            label.col-form-label.col-sm-3(for='name') Name:
-            .col-sm-6
-              input#email(type='text', name='name', required, placeholder='Your Name')
-          .form-group.row
-            label.col-form-label.col-sm-3(for='msg') Your Message:
-            .col-sm-10
-              textarea#msg.form-control(rows='5', name = 'msg', required, placeholder='Your Message')
-          .form-group.row
-            label.col-form-label.col-sm-3
-            .col-sm-6
-              button.btn.btn-primary(type='submit') Send Message
-      
+  .row
+    .container.col-12.col-md-4
+      .card
+        .card-body
+          h3.card-title.pb-3 Contact Us
+          form(name='contact', action='/thanks', method='post')
+            .form-group.row
+              label.col-form-label.col-xl-4(for='email') Email:
+              .col-xl-6
+                input.px-1.form-control#email(type='email', name='email', required='', placeholder='Your Email Address')
+            .form-group.row
+              label.col-form-label.col-xl-4(for='name') Name:
+              .col-xl-6
+                input.px-1.form-control#email(type='text', name='name', required='', placeholder='Your Name')
+            .form-group.row
+              label.col-form-label.col-xl-4(for='msg') Your Message:
+              .col-xl-8
+                textarea.px-1#msg.form-control(rows='5', name = 'msg', required='', placeholder='Your Message')
+            .form-group.row
+              label.col-form-label.col-xl-4
+              .col-xl-6
+                button.btn.btn-primary(type='submit') Send Message
+
+  //- //- Form validation with bootstrap.  Does not work
+  //- .row
+  //-   .container.col-12.col-md-4
+  //-     .card
+  //-       .card-body
+  //-         h3.card-title.pb-3 Contact Us
+  //-         form
+  //-         #needs-validation.container(novalidate='')
+  //-           .form-group.row
+  //-             label.col-form-label.col-sm-2(for='email') Email:
+  //-             .col-sm-6
+  //-               input.px-1.form-control#email(type='email', name='email', required='', placeholder='Your Email Address')
+  //-               .invalid-feedback Please provide a valid email
+  //-           .form-group.row
+  //-             label.col-form-label.col-sm-2(for='name') Name:
+  //-             .col-sm-6
+  //-               input.px-1.form-control#email(type='text', name='name', required='', placeholder='Your Name')
+  //-               .invalid-feedback Please provide your name
+  //-           .form-group.row
+  //-             label.col-form-label.col-sm-6(for='msg') Your Message:
+  //-             .col-sm-12
+  //-               textarea.px-1#msg.form-control(rows='5', name = 'msg', required='', placeholder='Your Message')
+  //-               .invalid-feedback Dont forget your message!
+  //-           .form-group.row
+  //-             label.col-form-label.col-sm-3
+  //-             .col-sm-6
+  //-               button.btn.btn-primary(type='submit') Send Message
+  //- script(src="/javascripts/formvalidation.js")
