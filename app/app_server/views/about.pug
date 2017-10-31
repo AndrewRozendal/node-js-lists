@@ -1,5 +1,44 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1.text-center.p-3= title
+  .row
+    .container.information.py-3.px-5.col-12.col-md-8
+      p.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum non neque nec vulputate.
+        Maecenas et sagittis nunc, ut accumsan ipsum. In eros sem, convallis rutrum interdum dignissim,
+          viverra sit amet risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+          Donec venenatis diam et nibh laoreet, id sagittis mi elementum. Maecenas eget ex sodales, luctus libero et,
+            laoreet sapien. Aenean dignissim euismod fringilla. Sed id maximus libero.
+
+      p.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum non neque nec vulputate.
+        Maecenas et sagittis nunc, ut accumsan ipsum. In eros sem, convallis rutrum interdum dignissim,
+          viverra sit amet risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+          Donec venenatis diam et nibh laoreet, id sagittis mi elementum. Maecenas eget ex sodales, luctus libero et,
+            laoreet sapien. Aenean dignissim euismod fringilla. Sed id maximus libero.
+    .container.picture.py-3.px-5.col-12.col-md-4
+      img(src="/example.jpg", alt="Picture goes here")
+
+  .row.col-12.col-md-8
+    .card
+      .card-body
+        h3.card-title.pb-3 Contact Us
+        form(name='contact', action='/thanks', method='post')
+          .form-group.row
+            label.col-form-label.col-sm-3(for='email') Email:
+            .col-sm-6
+              input#email(type='email', name='email', required, placeholder='Your Email Address')
+          .form-group.row
+            label.col-form-label.col-sm-3(for='name') Name:
+            .col-sm-6
+              input#email(type='text', name='name', required, placeholder='Your Name')
+          .form-group.row
+            label.col-form-label.col-sm-3(for='msg') Your Message:
+            .col-sm-10
+              textarea#msg.form-control(rows='5', name = 'msg', required, placeholder='Your Message')
+          .form-group.row
+            label.col-form-label.col-sm-3
+            .col-sm-6
+              button.btn.btn-primary(type='submit') Send Message
+      

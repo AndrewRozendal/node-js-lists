@@ -1,10 +1,10 @@
 extends layout
 
 block content
-  h1.text-center= title
+  h1.text-center.py-3= title
   .row
     .book-details.col-12.col-xl-8
-      h2 Find a Book
+      h2 Add a Book to Your Reading List
       .container.book-list
         .card.my-5.text-center
           img.card-img-top(src='/images/placeholder.jpg', alt='Placeholder Image')
@@ -42,5 +42,12 @@ block content
           .card-block
             a.btn.m-2.btn-primary.see-details(href='/book') See More Details
             a.btn.m-2.btn-primary.add-to-booklist(href='#') Add to My Booklist
-    .side-bar-text.col-12.col-xl-4
-      p Side Bar Text goes here
+    .side-bar-text.col-12.col-xl-4.pt-5
+      p.
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum non
+        neque nec vulputate. Maecenas et sagittis nunc, ut accumsan ipsum. In eros
+         sem, convallis rutrum interdum dignissim, viverra sit amet risus.
+          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+           cubilia Curae; Donec venenatis diam et nibh laoreet, id sagittis mi
+            elementum. Maecenas eget ex sodales, luctus libero et, laoreet sapien.
+             Aenean dignissim euismod fringilla. Sed id maximus libero.
