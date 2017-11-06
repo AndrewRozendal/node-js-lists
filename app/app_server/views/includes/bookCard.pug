@@ -2,7 +2,7 @@ mixin writeBookCard(book, buttons)
   .card.my-5.text-center
     - const url = book.coverImage.image
     - const altText = book.coverImage.altText
-    img.card-img-top(src=url, alt=altText, style='width:20em;height:20em')
+    img.card-img-top(src=url, alt=altText, style='width:20em;height:20em;margin:auto')
     .card-block
       h4.card-title #{book.title}
       p.card-text #{book.catchphrase}
