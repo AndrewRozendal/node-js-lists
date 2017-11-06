@@ -4,21 +4,11 @@ block content
   h1.text-center.p-3= title
   .row
     .container.information.py-3.px-5.col-12.col-md-8
-      p.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum non neque nec vulputate.
-        Maecenas et sagittis nunc, ut accumsan ipsum. In eros sem, convallis rutrum interdum dignissim,
-          viverra sit amet risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-          Donec venenatis diam et nibh laoreet, id sagittis mi elementum. Maecenas eget ex sodales, luctus libero et,
-            laoreet sapien. Aenean dignissim euismod fringilla. Sed id maximus libero.
-
-      p.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum non neque nec vulputate.
-        Maecenas et sagittis nunc, ut accumsan ipsum. In eros sem, convallis rutrum interdum dignissim,
-          viverra sit amet risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-          Donec venenatis diam et nibh laoreet, id sagittis mi elementum. Maecenas eget ex sodales, luctus libero et,
-            laoreet sapien. Aenean dignissim euismod fringilla. Sed id maximus libero.
+      p= aboutUs
     .container.picture.py-3.px-5.col-12.col-md-4
-      img(src="/example.jpg", alt="Picture goes here")
+      - const url = image.image
+      - const altText = image.altText
+      img(src=url, alt=altText)
 
   .row
     .container.col-12.col-md-4

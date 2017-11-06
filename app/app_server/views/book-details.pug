@@ -1,18 +1,11 @@
 extends layout
+include includes/bookCard
 
 block content
   h1.text-center.py-3= title
   .row.justify-content-center
     .book-details.col-12.col-xl-8
-      .card.my-5.text-center
-        img.card-img-top(src='/images/placeholder.jpg', alt='Placeholder Image')
-        .card-block
-          h4.card-title The Art of War
-          p.card-text A timeless classic on warfare.
-        ul.list-group.list-group-flush
-          li.list-group-item Author: Sun Tzu
-          li.list-group-item ISBN: 4582347-52347858
-          li.list-group-item Rating: 5/5
-        .card-block
-          a.btn.m-2.btn-primary.see-details(href='/book') See More Details
-          a.btn.m-2.btn-primary.add-to-booklist(href='#') Add to My Booklist
+      - const buttons = [{url: '/book/add-book-to-library', tag: 'Add to My Reading List'}]
+      +writeBookCard(book, buttons)
+  .side-bar-text.col-12.col-xl-4.pt-5
+    p= sideContent

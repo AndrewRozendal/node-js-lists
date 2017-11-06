@@ -1,0 +1,16 @@
+mixin writeBookCard(book, buttons)
+  .card.my-5.text-center
+    - const url = book.coverImage.image
+    - const altText = book.coverImage.altText
+    img.card-img-top(src=url, alt=altText, style='width:20em;height:20em')
+    .card-block
+      h4.card-title #{book.title}
+      p.card-text #{book.catchphrase}
+    ul.list-group.list-group-flush
+      li.list-group-item Author: #{book.author}
+      li.list-group-item ISBN: #{book.ISBN}
+      li.list-group-item Rating: #{book.rating}
+    .card-block
+      each button in buttons
+        - const url = button.url
+        a.btn.m-2.btn-primary(href=url) #{button.tag}
