@@ -1,5 +1,5 @@
-extends layout
-include includes/bookCard
+extends ../layout
+include ../includes/bookCard
 
 block content
   h1.text-center.py-3= pageHeader.title
@@ -8,7 +8,7 @@ block content
       h2= pageHeader.tagline
       .container.book-list
         each book in books
-          - const buttons = [{url: '/book', tag: 'More Details'}, {url: '/book/add-book-to-library', tag: 'Add To My Reading List'}]
+          - const buttons = [{url: '/book', tag: 'More Details'}, {url: '#', tag: 'Add To My Reading List'}]
           +writeBookCard(book, buttons)
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
