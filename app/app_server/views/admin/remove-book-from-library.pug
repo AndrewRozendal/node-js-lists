@@ -1,5 +1,14 @@
 extends ../layout
+include ../includes/bookCard
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1.text-center.py-3= pageHeader.title
+  .row
+    .book-details.col-12.col-xl-8
+      h2= pageHeader.tagline
+      .container.book-list
+        each book in books
+          - const buttons = [{url: '#', tag: 'Remove this Book From the Library'}]
+          +writeBookCard(book, buttons)
+    .side-bar-text.col-12.col-xl-4.pt-5
+      p= sideContent
