@@ -10,6 +10,11 @@ services:
       - NODE_ENV=development
     ports:
       - "3000:3000"
+    links:
+      - db
     volumes:
       - ./app:/home/node/app
     command: "nodemon -L"
+  db:
+    container_name: mongo
+    image: mongo:3.2.9
