@@ -47,6 +47,10 @@ const booksList = function(req, res){
 const bookDetails = function(req, res){
     res.render('book-details', { 
         title: 'Book Details',
+        pageHeader: {
+            title: 'Book Details',
+            tagline: 'Additional information',
+        },
         book: {
             title: 'The Art of War',
             coverImage: {

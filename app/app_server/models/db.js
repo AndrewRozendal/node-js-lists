@@ -13,3 +13,5 @@ mongoose.connection.on('error', function() {
 mongoose.connection.on('disconnected', function() {
     console.log('Mongoose disconnected');
 });
+
+require('./book_schema');
