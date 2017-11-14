@@ -18,13 +18,31 @@ block content
                   label.col-form-label.col-xl-4(for= fieldName) #{column.displayName}
                   .col-xl-6
                     input.px-1.form-control(id= fieldName, type= type, name= fieldName, required='', placeholder='New data here')
-              .form-group.row
-                label.col-form-label.col-xl-4
-                .col-xl-6
-                  button.btn.btn-primary(type='submit') Preview New Book
+              //- .form-group.row
+              //-   label.col-form-label.col-xl-4
+              //-   .col-xl-6
+              //-     button.btn.btn-primary(onclick="preview()") Preview New Book
               .form-group.row
                 label.col-form-label.col-xl-4
                 .col-xl-6
                   button.btn.btn-primary(type='submit') Add New Book to Library
-    .side-bar-text.col-12.col-xl-4.pt-5
+            button.btn.btn-primary(onclick="preview()") Preview New Book
+    .side-bar-text#side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
+      .container#preview
+
+  script.
+    function preview(){
+      let target = document.getElementById('preview');
+      target.innerHTML = "Preview:";
+      //- book = array()
+      //- foreach(field in addBook):
+      //- target.innerHTML += bookCard()
+
+// see http://jsfiddle.net/mEefW/ for example
+//-       var inputBox = document.getElementById('chatinput');
+
+//- inputBox.onkeyup = function(){
+//-     document.getElementById('printchatbox').innerHTML = inputBox.value;
+//- }
+    }
