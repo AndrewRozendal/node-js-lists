@@ -34,15 +34,26 @@ block content
   script.
     function preview(){
       let target = document.getElementById('preview');
+      let inputs = document.forms['addBook'].getElementsByTagName('input');
       target.innerHTML = "Preview:";
-      //- book = array()
-      //- foreach(field in addBook):
+
+      //temp
+      for(let input in inputs){
+        alert(input);
+        target.innerHTML += input.id + ': ' + input.value;
+      }
+
+      //- // this needs to match books.js book array layout (key value pairs)     
+      //- book = array();
+      //- foreach input in inputs{
+      //-   book.push(input:name)
+      //- }
       //- target.innerHTML += bookCard()
-
-// see http://jsfiddle.net/mEefW/ for example
-//-       var inputBox = document.getElementById('chatinput');
-
-//- inputBox.onkeyup = function(){
-//-     document.getElementById('printchatbox').innerHTML = inputBox.value;
-//- }
     }
+
+    // see http://jsfiddle.net/mEefW/ for example
+    //-       var inputBox = document.getElementById('chatinput');
+
+    //- inputBox.onkeyup = function(){
+    //-     document.getElementById('printchatbox').innerHTML = inputBox.value;
+    //- }
