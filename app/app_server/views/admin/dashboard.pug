@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1.text-center.p-3= title
+  .row
+    .container.information.py-3.px-5.col-12.col-md-8
+      p= content
+      each button in buttons
+        - const url = button.url
+        a.nav-link(href=url) #{button.name}
+    .side-bar-text.col-12.col-xl-4.pt-5
+      p= sideContent

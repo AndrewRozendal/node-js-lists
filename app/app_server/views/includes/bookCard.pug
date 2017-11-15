@@ -7,10 +7,38 @@ mixin writeBookCard(book, buttons)
       h4.card-title #{book.title}
       p.card-text #{book.catchphrase}
     ul.list-group.list-group-flush
-      li.list-group-item Author: #{book.author}
-      li.list-group-item ISBN: #{book.ISBN}
-      li.list-group-item Rating: #{book.rating}
+      li.list-group-item
+        p Author: 
+        p #{book.author}
+      li.list-group-item
+        p ISBN: 
+        p #{book.ISBN}
+      li.list-group-item
+        p Rating: 
+        p #{book.rating}
     .card-block
       each button in buttons
         - const url = button.url
         a.btn.m-2.btn-primary(href=url) #{button.tag}
+
+mixin writeBookCardBlank()
+  - const buttons = [{url: '#', tag: 'More Details'}, {url: '#', tag: 'Add To My Reading List'}]
+  .card.my-5.text-center
+    img.card-img-top(src='null', alt='Image preview not supported', style='width:20em;height:20em;margin:auto')
+    .card-block
+      h4.card-title#title
+      p.card-text#catchPhrase
+    ul.list-group.list-group-flush
+      li.list-group-item
+        p Author: 
+        p#author
+      li.list-group-item
+        p ISBN: 
+        p#ISBN
+      li.list-group-item
+        p Rating:
+        p 5/5
+    .card-block
+      each button in buttons
+        - const url = button.url
+        a.btn.m-2.btn-primary(href=url, disabled='disabled') #{button.tag}

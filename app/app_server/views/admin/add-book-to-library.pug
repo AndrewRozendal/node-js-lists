@@ -1,0 +1,42 @@
+extends ../layout
+include ../includes/bookCard
+
+block content
+  h1.text-center.py-3= pageHeader.title
+  .row
+    .book-details.col-12.col-xl-8
+      h2= pageHeader.tagline
+      .container.col-12.col-md-4
+        .card
+          .card-body
+            h3.card-title.pb-3 New Book Form
+            form(name='addBook', action='#', method='post')
+              each column in BookColumns
+                .form-group.row
+                  - const type = column.type
+                  - const fieldName = "new" + column.columnName
+                  label.col-form-label.col-xl-4(for= fieldName) #{column.displayName}
+                  .col-xl-6
+                    input.px-1.form-control(id= fieldName, type= type, name= fieldName, required='', placeholder='New data here')
+              .form-group.row
+                label.col-form-label.col-xl-4
+                .col-xl-6
+                  button.btn.btn-primary(type='submit') Add New Book to Library
+    .side-bar-text#side-bar-text.col-12.col-xl-4.pt-5
+      p= sideContent
+      .container#preview
+        +writeBookCardBlank
+
+  script.
+    //- Automatically update the preview container whenever changes are made to the
+    //- form inputs
+    let target = document.getElementById('preview');
+    let inputs = document.forms['addBook'].getElementsByTagName('input');
+
+    for(let i = 0, len = inputs.length; i < len; i++){
+      let element = inputs[i];
+      element.onkeyup = function(){
+        let correspondingID = (element.id).substr(3);
+        document.getElementById(correspondingID).innerHTML = element.value;
+      }
+    }

@@ -1,11 +1,11 @@
-extends layout
-include includes/bookCard
+extends ../layout
+include ../includes/bookCard
 
 block content
   h1.text-center.py-3= title
   .row.justify-content-center
     .book-details.col-12.col-xl-8
-      - const buttons = [{url: '/book/add-book-to-library', tag: 'Add to My Reading List'}]
+      - const buttons = [{url: '#', tag: 'Add to My Reading List'}]
       +writeBookCard(book, buttons)
   .side-bar-text.col-12.col-xl-4.pt-5
     p= sideContent
