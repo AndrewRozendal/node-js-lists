@@ -14,46 +14,29 @@ block content
               each column in BookColumns
                 .form-group.row
                   - const type = column.type
-                  - const fieldName = column.columnName
+                  - const fieldName = "new" + column.columnName
                   label.col-form-label.col-xl-4(for= fieldName) #{column.displayName}
                   .col-xl-6
                     input.px-1.form-control(id= fieldName, type= type, name= fieldName, required='', placeholder='New data here')
-              //- .form-group.row
-              //-   label.col-form-label.col-xl-4
-              //-   .col-xl-6
-              //-     button.btn.btn-primary(onclick="preview()") Preview New Book
               .form-group.row
                 label.col-form-label.col-xl-4
                 .col-xl-6
                   button.btn.btn-primary(type='submit') Add New Book to Library
-            button.btn.btn-primary(onclick="preview()") Preview New Book
     .side-bar-text#side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
       .container#preview
+        +writeBookCardBlank
 
   script.
-    function preview(){
-      let target = document.getElementById('preview');
-      let inputs = document.forms['addBook'].getElementsByTagName('input');
-      target.innerHTML = "Preview:";
+    //- Automatically update the preview container whenever changes are made to the
+    //- form inputs
+    let target = document.getElementById('preview');
+    let inputs = document.forms['addBook'].getElementsByTagName('input');
 
-      //temp
-      for(let input in inputs){
-        alert(input);
-        target.innerHTML += input.id + ': ' + input.value;
+    for(let i = 0, len = inputs.length; i < len; i++){
+      let element = inputs[i];
+      element.onkeyup = function(){
+        let correspondingID = (element.id).substr(3);
+        document.getElementById(correspondingID).innerHTML = element.value;
       }
-
-      //- // this needs to match books.js book array layout (key value pairs)     
-      //- book = array();
-      //- foreach input in inputs{
-      //-   book.push(input:name)
-      //- }
-      //- target.innerHTML += bookCard()
     }
-
-    // see http://jsfiddle.net/mEefW/ for example
-    //-       var inputBox = document.getElementById('chatinput');
-
-    //- inputBox.onkeyup = function(){
-    //-     document.getElementById('printchatbox').innerHTML = inputBox.value;
-    //- }

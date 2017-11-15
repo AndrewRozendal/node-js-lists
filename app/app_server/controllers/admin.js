@@ -52,7 +52,18 @@ const addBookToLibrary = function(req, res) {
         columnName: "ISBN",
         displayName: "ISBN",
         type: "text"
-      }]
+      }],
+      bookTemplate: {
+        title: ' ',
+        coverImage: {
+            image: ' ',
+            altText: ' '
+        }, 
+        catchphrase: ' ',
+        author: ' ',
+        ISBN: ' ',
+        rating: ' '
+      }
     });
 };
 
