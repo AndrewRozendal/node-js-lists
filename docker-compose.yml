@@ -18,3 +18,7 @@ services:
   db:
     container_name: mongo
     image: mongo:3.4.10
+    environment:
+      - MONGO_INITDB_DATABASE=rozendal-lists
+    volumes:
+      - ./mongo-seed:/docker-entrypoint-initdb.d
