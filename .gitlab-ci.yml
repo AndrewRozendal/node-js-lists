@@ -26,6 +26,7 @@ before_script:
   # - '[[ -f /.dockerenv ]] && echo "$SSH_SERVER_HOSTKEYS" > ~/.ssh/known_hosts'
 stages:
   - deploy-app
+  - deploy-db
 deploy_app_to_dokku:
   stage: deploy-app
   tags:
@@ -34,5 +35,23 @@ deploy_app_to_dokku:
   script:
     # push the app to the deploy server
     - git subtree push --prefix app dokku@${DEPLOY_SRV}:$CI_PROJECT_NAME master
+  only:
+    - master
+deploy_db_to_dokku:
+  stage: deploy-db
+  tags:
+    # use a deploy runner
+    - deploy
+  script:
+    # Unlink Service - the conditional is if this is being run on first deploy
+    - 'ssh dokku@$DEPLOY_SRV mongo:unlink ${CI_PROJECT_NAME}-DB $CI_PROJECT_NAME || true'
+    # Destroy DB - the conditional is if on first run, the DB hasn't been created yet
+    - 'ssh dokku@$DEPLOY_SRV -- --force mongo:destroy ${CI_PROJECT_NAME}-DB || true'
+    # Create/Re-create DB
+    - ssh dokku@$DEPLOY_SRV mongo:create ${CI_PROJECT_NAME}-DB
+    # Import dump
+    - ssh dokku@$DEPLOY_SRV mongo:import ${CI_PROJECT_NAME}-DB < ./mongo-seed/dump.gz
+    # link DB container to app
+    - ssh dokku@$DEPLOY_SRV mongo:link ${CI_PROJECT_NAME}-DB $CI_PROJECT_NAME
   only:
     - master
