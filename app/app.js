@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const appRouter = require('./app_server/routes/app_router');
-//require('./app_server/models/db');
+require('./app_server/models/db');
 
 const app = express();
 
