@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://mongo/rozendal-lists';
+let dbURI = 'mongodb://mongo/rozendal-lists';
+
+if (process.env.NODE_ENV === 'production'){
+    dbURI = process.env.MONGO_URL;
+}
+
 mongoose.connect(dbURI, { useMongoClient: true });
 
 mongoose.connection.on('connected', function() {
