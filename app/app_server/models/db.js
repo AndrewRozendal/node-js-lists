@@ -7,11 +7,11 @@ mongoose.connection.on('connected', function() {
 });
 
 mongoose.connection.on('error', function(err) {
-    console.log('Mongoose connection error:' + error);
+    console.log('Mongoose connection error:' + err);
 });
 
 mongoose.connection.on('disconnected', function() {
     console.log('Mongoose disconnected');
 });
 
-//require('./book_schema');
+require('./book_schema');
