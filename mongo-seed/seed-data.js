@@ -49,3 +49,9 @@ db.books.save({
     ISBN: '1788282361',
     rating: '5/5'
 });
+
+db.users.save({
+    userName: 'testUser',
+    password: 'encryptedPassword',
+    email: 'test@foo.foo'
+})
