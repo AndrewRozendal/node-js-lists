@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const bookSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     userName: {
         type: String,
         required: true
@@ -15,4 +15,4 @@ const bookSchema = new mongoose.Schema({
     }    
 });
 
-mongoose.model('book', bookSchema);
+mongoose.model('user', userSchema);

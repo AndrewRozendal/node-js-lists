@@ -1,19 +1,27 @@
 'use strict';
+const auth = require('basic-auth');
 
 const admin = function(req, res) {
-  res.render('./admin/dashboard', { 
-    title: 'Admin - Dashboard',
-    content: 'Admin content goes here',
-    sideContent: "Info on how to use page here",
-    buttons: [{
-      url: "/admin/add-book-to-library",
-      name: "Add a Book To the Library"
-    },
-    {
-      url: "/admin/remove-book-from-library",
-      name: "Remove a Book From the Library"
-    }]
-  });
+  let credentials = auth(req);
+  if(!credentials || credentials.name !== 'testUser'  || credentials.pass !== 'encryptedPassword'){
+    res.statusCode = 401;
+    res.setHeader('WWW-Authenticate', 'Basic realm="example"');
+    res.end('Access denied');
+  } else {
+    res.render('./admin/dashboard', { 
+      title: 'Admin - Dashboard',
+      content: 'Admin content goes here',
+      sideContent: "Info on how to use page here",
+      buttons: [{
+        url: "/admin/add-book-to-library",
+        name: "Add a Book To the Library"
+      },
+      {
+        url: "/admin/remove-book-from-library",
+        name: "Remove a Book From the Library"
+      }]
+    });
+  }
 };
 
 const addBookToLibrary = function(req, res) {
