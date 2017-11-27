@@ -3,7 +3,8 @@ const auth = require('basic-auth');
 
 const admin = function(req, res) {
   let credentials = auth(req);
-  if(!credentials || credentials.name !== 'testUser'  || credentials.pass !== 'encryptedPassword'){
+  // if(!credentials || credentials.name !== 'testUser'  || credentials.pass !== 'encryptedPassword'){ //TODO: FOR NOW WE WILL JUST ASSUME ALLOWED
+  if(true){
     res.statusCode = 401;
     res.setHeader('WWW-Authenticate', 'Basic realm="example"');
     res.end('Access denied');
