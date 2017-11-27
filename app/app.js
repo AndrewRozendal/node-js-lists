@@ -7,9 +7,9 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+require('./app_api/models/db');
 const appRouter = require('./app_server/routes/app_router');
 const apiRouter = require('./app_api/routes/api_router');
-require('./app_server/models/db');
 
 const app = express();
 
