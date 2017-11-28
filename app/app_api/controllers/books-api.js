@@ -3,13 +3,31 @@ const mongoose = require('mongoose');
 const bookModel = mongoose.model('book');
 
 const booksListByName = function (req, res){
-    res
-        .status(200)
-        .json({"status": "success"});
+    bookModel.find().exec( function(err, books) {
+        //CASE: bookid doesnt match anything in db
+        if(!books){
+            res
+                .status(404)
+                .json({
+                    "message": "bookid not found"
+                });
+            return;
+        //CASE: error object returned
+        } else if(err){
+            res
+                .status(404)
+                .json(err);
+            return;
+        //CASE: successful query
+        } else {
+            res
+                .status(200)
+                .json(books);
+        }
+    });
 };
 
 const booksReadOne = function (req, res){
-    //CASE: successful query
     if(req.params && req.params.bookid){
         bookModel
         .findById(req.params.bookid)
@@ -21,13 +39,14 @@ const booksReadOne = function (req, res){
                     .json({
                         "message": "bookid not found"
                     });
-                    return;
+                return;
             //CASE: error object returned
             } else if(err){
                 res
                     .status(404)
                     .json(err);
                 return;
+            //CASE: successful query
             } else {
                 res
                     .status(200)
@@ -44,8 +63,35 @@ const booksReadOne = function (req, res){
     }
 };
 
+const readingListByName = function(req, res){
+    res
+        .status(404)
+        .json({
+            "message": "Not yet implemented"
+        });
+};
+
+const readingListAddOne = function (req, res){
+    res
+    .status(404)
+    .json({
+        "message": "Not yet implemented"
+    });
+};
+
+const readingListRemoveOne = function (req, res){
+    res
+    .status(404)
+    .json({
+        "message": "Not yet implemented"
+    });
+};
+
 //- export all functions for use by routes
 module.exports = {
     booksListByName,
-    booksReadOne
+    booksReadOne,
+    readingListByName,
+    readingListAddOne,
+    readingListRemoveOne
 };
