@@ -7,7 +7,7 @@ const apiOptions = {
 };
 
 if(process.env.NODE_ENV === 'production'){
-    apiOptions.server = 'http://rozendal-list.deploy.cs.camosun.bc.ca/api/'
+    apiOptions.server = 'http://rozendal-lists.deploy.cs.camosun.bc.ca/api/'
 }
 
 //Linked with renderHomepage
