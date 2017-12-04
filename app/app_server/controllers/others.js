@@ -1,5 +1,13 @@
 'use strict';
 
+const apiOptions = {
+  server: 'http://localhost:3000/api/'
+};
+
+if(process.env.NODE_ENV === 'production'){
+  apiOptions.server = 'http://rozendal-list.deploy.cs.camosun.bc.ca/api/'
+}
+
 const about = function(req, res) {
   res.render('./others/about', { 
     title: 'About Rozendal Book Lists',

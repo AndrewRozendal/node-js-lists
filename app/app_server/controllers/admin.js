@@ -1,6 +1,14 @@
 'use strict';
 const auth = require('basic-auth');
 
+const apiOptions = {
+  server: 'http://localhost:3000/api/'
+};
+
+if(process.env.NODE_ENV === 'production'){
+  apiOptions.server = 'http://rozendal-list.deploy.cs.camosun.bc.ca/api/'
+}
+
 const admin = function(req, res) {
   let credentials = auth(req);
   // if(!credentials || credentials.name !== 'testUser'  || credentials.pass !== 'encryptedPassword'){ //TODO: FOR NOW WE WILL JUST ASSUME ALLOWED
