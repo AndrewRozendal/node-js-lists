@@ -12,7 +12,7 @@ if(process.env.NODE_ENV === 'production'){
 const admin = function(req, res) {
   let credentials = auth(req);
   // if(!credentials || credentials.name !== 'testUser'  || credentials.pass !== 'encryptedPassword'){ //TODO: FOR NOW WE WILL JUST ASSUME ALLOWED
-  if(true){
+  if(!true){
     res.statusCode = 401;
     res.setHeader('WWW-Authenticate', 'Basic realm="example"');
     res.end('Access denied');
@@ -69,7 +69,12 @@ const addBookToLibrary = function(req, res) {
         columnName: "ISBN",
         displayName: "ISBN",
         type: "text"
-      }],
+      },
+    {
+      columnName: "detailedDescription",
+      displayName: "Detailed Description",
+      type: "text"
+    }],
       bookTemplate: {
         title: ' ',
         coverImage: {
@@ -79,7 +84,8 @@ const addBookToLibrary = function(req, res) {
         catchphrase: ' ',
         author: ' ',
         ISBN: ' ',
-        rating: ' '
+        rating: ' ',
+        detailedDescription: ' '
       }
     });
 };

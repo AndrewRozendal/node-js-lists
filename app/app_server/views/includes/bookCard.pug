@@ -15,7 +15,12 @@ mixin writeBookCard(book, buttons)
         p #{book.ISBN}
       li.list-group-item
         p Rating: 
-        p #{book.rating}
+        p #{book.rating}/5
+      //- only print detailedDescription column in page wants it
+      if book.detailedDescription
+        li.list-group-item
+          p Detailed Description
+          p #{book.detailedDescription}
     .card-block
       each button in buttons
         - const url = button.url
@@ -38,6 +43,9 @@ mixin writeBookCardBlank()
       li.list-group-item
         p Rating:
         p 5/5
+      li.list-group-item
+        p Detailed Description
+        p Details go here
     .card-block
       each button in buttons
         - const url = button.url

@@ -8,7 +8,7 @@ db.books.save({
     catchphrase: 'A timeless classic on warfare',
     author: 'Sun Tzu',
     ISBN: '0981162614',
-    rating: '5/5'
+    rating: '5'
 });
 
 db.books.save({
@@ -21,7 +21,7 @@ db.books.save({
     catchphrase: 'Tells the story of the Trojan War',
     author: 'Homer trans. Robert Fagles',
     ISBN: '0140275363',
-    rating: '5/5'
+    rating: '5'
 });
 
 db.books.save({
@@ -34,7 +34,7 @@ db.books.save({
     catchphrase: 'Tolstoy\'s masterwork on Napoleon\s invasion of Russia in 1812',
     author: 'Leo Tolstoy trans. Richard Peaver, Larissa Volokhonsky',
     ISBN: '1400079985',
-    rating: '5/5',
+    rating: '5',
     detailedDescription: 'This should not appear on the home page'
 });
 
@@ -48,7 +48,7 @@ db.books.save({
     catchphrase: 'A Dystopian future where War is Peace and Big Brother reigns supreme',
     author: 'George Orwell',
     ISBN: '1788282361',
-    rating: '5/5'
+    rating: '5'
 });
 
 db.users.save({
