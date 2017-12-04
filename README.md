@@ -11,7 +11,7 @@ Route Layouts:
 | Collection | Page / Screen                          | HTTP VERB  | URL Endpoint |
 | ---------- |----------------------------------------| -----------|----------------------------------------|
 | Books      |List of All Books                       |GET         |/api/books
-|            |Get Book Details                        |GET         |/api/book-details/:bookid
+|            |Get Book Details                        |GET         |/api/books/book-details/:bookid
 |            |List of Books in User Reading List      |GET         |/api/books/reading-list/:userid
 |            |Add book to user reading list           |POST        |/api/books/reading-list/:userid/:bookid
 |            |Remove book from reading list           |POST        |/api/books/reading-list/:userid/:bookid

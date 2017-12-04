@@ -10,7 +10,7 @@ const adminController = require('../controllers/admin');
 /* GET home page. */
 router.get('/', booksController.booksList);
 /* GET the book details page */
-router.get('/book', booksController.bookDetails);
+router.get('/book/:bookid', booksController.bookDetails);
 /* GET the users reading list page */
 router.get('/reading-list', booksController.readingList);
 

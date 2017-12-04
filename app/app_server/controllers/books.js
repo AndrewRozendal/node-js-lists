@@ -10,6 +10,7 @@ if(process.env.NODE_ENV === 'production'){
     apiOptions.server = 'http://rozendal-list.deploy.cs.camosun.bc.ca/api/'
 }
 
+//Linked with renderHomepage
 const booksList = function(req, res){
     //Request
     const reqOptions = {
@@ -43,28 +44,41 @@ const renderHomepage = function(req, res, data){
     });
 };
 
+//Linked with renderDetailsPage
 const bookDetails = function(req, res){
+    //Request
+    const reqOptions = {
+        baseUrl: apiOptions.server,
+        url: `/books/book-details/${req.params.bookid}`,
+        method: 'GET',
+        json: {}
+    };
+
+    request(reqOptions, function(err, apiRes, apiResBody){
+        renderDetailsPage(req, res, apiResBody);
+    });
+}
+
+const renderDetailsPage = function(req, res, data){
+    let errorMsg = null;
+    if(!(data instanceof Object)){
+        errorMsg = 'API lookup error';
+        data = {};
+    }
+
     res.render('./books/book-details', { 
         title: 'Book Details',
         pageHeader: {
             title: 'Book Details',
             tagline: 'Additional information',
         },
-        book: {
-            title: 'The Art of War',
-            coverImage: {
-                image: '/images/artOfWarCover.jpg',
-                altText: 'Art of War Book Cover'
-            }, 
-            catchphrase: 'A timeless classic on warfare',
-            author: 'Sun Tzu',
-            ISBN: '34252353-34234-234234',
-            rating: '5/5'
-        }
+        book: data,
+        errorMsg: errorMsg
     });
 }
 
 const readingList = function(req, res){
+    // TODO: implement user reading lists
     res.render('./books/reading-list', {
         title: 'Your Reading List',
         pageHeader: {

@@ -2,7 +2,7 @@ db.books.save({
     title: 'The Art of War',
     coverImage: {
         _id: ObjectId(),
-        image: '/images/artOfWar.jpg',
+        image: 'images/artOfWar.jpg',
         altText: 'Art of War Book Cover'
     }, 
     catchphrase: 'A timeless classic on warfare',
@@ -15,7 +15,7 @@ db.books.save({
     title: 'The Iliad',
     coverImage: {
         _id: ObjectId(),
-        image: '/images/theIliad.jpg',
+        image: 'images/theIliad.jpg',
         altText: 'The classic poem by Homer'
     }, 
     catchphrase: 'Tells the story of the Trojan War',
@@ -28,7 +28,7 @@ db.books.save({
     title: 'War and Peace',
     coverImage: {
         _id: ObjectId(),
-        image: '/images/warAndPeace.jpg',
+        image: 'images/warAndPeace.jpg',
         altText: 'War and Peace Book Cover'
     }, 
     catchphrase: 'Tolstoy\'s masterwork on Napoleon\s invasion of Russia in 1812',
@@ -42,7 +42,7 @@ db.books.save({
     title: 'Nineteen Eighty-four',
     coverImage: {
         _id: ObjectId(),
-        image: '/images/nineteenEightyFour.jpg',
+        image: 'images/nineteenEightyFour.jpg',
         altText: 'Nineteen Eighty-Four Book Cover'
     }, 
     catchphrase: 'A Dystopian future where War is Peace and Big Brother reigns supreme',

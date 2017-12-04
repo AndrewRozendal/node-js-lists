@@ -4,6 +4,8 @@ include ../includes/bookCard
 block content
   h1.text-center.py-3= title
   .row.justify-content-center
+    if errorMsg
+      .alert.alert-danger= errorMsg
     .book-details.col-12.col-xl-8
       - const buttons = [{url: '#', tag: 'Add to My Reading List'}]
       +writeBookCard(book, buttons)
