@@ -34,7 +34,8 @@ db.books.save({
     catchphrase: 'Tolstoy\'s masterwork on Napoleon\s invasion of Russia in 1812',
     author: 'Leo Tolstoy trans. Richard Peaver, Larissa Volokhonsky',
     ISBN: '1400079985',
-    rating: '5/5'
+    rating: '5/5',
+    detailedDescription: 'This should not appear on the home page'
 });
 
 db.books.save({

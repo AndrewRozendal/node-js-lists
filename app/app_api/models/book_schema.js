@@ -33,6 +33,9 @@ const bookSchema = new mongoose.Schema({
         default: 0,
         min: 0,
         max: 5
+    },
+    detailedDescription: {
+        type: String
     }
 });
 
