@@ -25,6 +25,12 @@ const booksList = function(req, res){
 }
 
 const renderHomepage = function(req, res, data){
+    let errorMsg = null;
+    if(!(data instanceof Array)){
+        errorMsg = 'API lookup error';
+        data = [];
+    }
+
     res.render('./books/index', { 
         title: 'Rozendal Book Lists',
         pageHeader: {
@@ -32,7 +38,8 @@ const renderHomepage = function(req, res, data){
             tagline: 'Add a Book to Your Reading List',
         },
         sideContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum non neque nec vulputate. Maecenas et sagittis nunc, ut accumsan ipsum. In eros sem, convallis rutrum interdum dignissim, viverra sit amet risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec venenatis diam et nibh laoreet, id sagittis mi elementum. Maecenas eget ex sodales, luctus libero et, laoreet sapien.  Aenean dignissim euismod fringilla. Sed id maximus libero.',
-        books: data
+        books: data,
+        errorMsg: errorMsg
     });
 };
 

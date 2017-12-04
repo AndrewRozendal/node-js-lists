@@ -7,6 +7,8 @@ block content
     .book-details.col-12.col-xl-8
       h2= pageHeader.tagline
       .container.book-list
+        if errorMsg
+          .alert.alert-danger= errorMsg
         each book in books
           - const buttons = [{url: '/book', tag: 'More Details'}, {url: '#', tag: 'Add To My Reading List'}]
           +writeBookCard(book, buttons)
