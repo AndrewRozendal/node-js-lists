@@ -3,17 +3,9 @@ const mongoose = require('mongoose');
 const bookModel = mongoose.model('book');
 
 const booksListByName = function (req, res){
-    bookModel.find().exec( function(err, books) {
-        //CASE: bookid doesnt match anything in db
-        if(!books){
-            res
-                .status(404)
-                .json({
-                    "message": "bookid not found"
-                });
-            return;
+    bookModel.find({}, {title: 1, coverImage: 1, catchphrase: 1, author: 1, ISBN: 1, rating: 1}).sort({'title': 1}).exec( function(err, books) {
         //CASE: error object returned
-        } else if(err){
+        if(err){
             res
                 .status(404)
                 .json(err);
