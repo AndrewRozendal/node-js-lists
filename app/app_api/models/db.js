@@ -21,3 +21,4 @@ mongoose.connection.on('disconnected', function() {
 
 require('./book_schema');
 require('./user_schema');
+require('./readingList_schema');

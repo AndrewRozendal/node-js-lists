@@ -77,8 +77,32 @@ const renderDetailsPage = function(req, res, data){
     });
 }
 
+
+// Linked with renderReadingListPage
 const readingList = function(req, res){
-    // TODO: implement user reading lists
+    //Request
+    const reqOptions = {
+        baseUrl: apiOptions.server,
+        url: `/books/reading-list/${req.params.userid}`,
+        method: 'GET',
+        json: {}
+    };
+
+    request(reqOptions, function(err, apiRes, apiResBody){
+        renderReadingListPage(req, res, apiResBody);
+    });
+}
+
+const renderReadingListPage = function(req, res, data){
+    let errorMsg = null;
+    if(!(data instanceof Array)){
+        errorMsg = 'API lookup error';
+        data = [];
+    }
+
+    // TODO: currently not implemented, so temp errorMsg:
+    errorMsg = 'Feature not implemented yet';
+
     res.render('./books/reading-list', {
         title: 'Your Reading List',
         pageHeader: {
@@ -86,39 +110,8 @@ const readingList = function(req, res){
             tagline: 'Manage Your Reading List',
         },
         sideContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum non neque nec vulputate. Maecenas et sagittis nunc, ut accumsan ipsum. In eros sem, convallis rutrum interdum dignissim, viverra sit amet risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec venenatis diam et nibh laoreet, id sagittis mi elementum. Maecenas eget ex sodales, luctus libero et, laoreet sapien.  Aenean dignissim euismod fringilla. Sed id maximus libero.',
-        books: [{
-            title: 'The Art of War',
-            coverImage: [{
-                image: '/images/artOfWar.jpg',
-                altText: 'Art of War Book Cover'
-            }], 
-            catchphrase: 'A timeless classic on warfare',
-            author: 'Sun Tzu',
-            ISBN: '34252353-34234-234234',
-            rating: 5
-        },
-        {
-            title: 'The Art of War',
-            coverImage: [{
-                image: '/images/artOfWar.jpg',
-                altText: 'Art of War Book Cover'
-            }], 
-            catchphrase: 'A timeless classic on warfare',
-            author: 'Sun Tzu',
-            ISBN: '34252353-34234-234234',
-            rating: 5
-        },
-        {
-            title: 'The Art of War',
-            coverImage: [{
-                image: '/images/artOfWar.jpg',
-                altText: 'Art of War Book Cover'
-            }], 
-            catchphrase: 'A timeless classic on warfare',
-            author: 'Sun Tzu',
-            ISBN: '34252353-34234-234234',
-            rating: 5
-        }]
+        books: data,
+        errorMsg: errorMsg
     });
 }
 
