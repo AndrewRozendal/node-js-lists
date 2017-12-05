@@ -20,3 +20,10 @@ Route Layouts:
 |            |Login to Admin                          |POST        |/api/admin/:adminid
 |            |Add book to the database                |PUT         |/api/admin/add-book-to-library/
 |            |Remove book from database               |DELETE      |/api/admin/remove-book-from-library/:bookid
+
+When updating DB, need to run following commands for remote deploy:
+
+1. winpty docker exec -it mongo bash
+2. cd docker-entrypoint-initdb.d
+3. mongodump --archive=dump.gz --gzip --db rozendal-lists
+4. git commit & push to master
