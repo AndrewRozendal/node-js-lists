@@ -1,3 +1,5 @@
+[![build status](https://gitlab.camosun.bc.ca/ics211-student-projects/rozendal-lists/badges/master/build.svg)](https://gitlab.camosun.bc.ca/ics211-student-projects/rozendal-lists/commits/master)
+
 Useful Resources:
 
 Online Sandbox for HTML, CSS & JS (supports pug)
