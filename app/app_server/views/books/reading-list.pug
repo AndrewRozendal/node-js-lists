@@ -9,7 +9,7 @@ block content
         if errorMsg
           .alert.alert-danger= errorMsg
         each book in books
-          - const buttons = [{url: '/book', tag: 'More Details'}, {url: '#', tag: 'Remove From My Reading List'}]
+          - const buttons = [{url: '/book', tag: 'More Details', type: 'info'}, {url: '#', tag: 'Remove From My Reading List'}]
           +writeBookCard(book, buttons)
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent

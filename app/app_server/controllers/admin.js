@@ -24,11 +24,13 @@ const admin = function(req, res) {
       sideContent: "Info on how to use page here",
       buttons: [{
         url: "/admin/add-book-to-library",
-        name: "Add a Book To the Library"
+        tag: "Add a Book To the Library",
+        type: 'success'
       },
       {
         url: "/admin/remove-book-from-library",
-        name: "Remove a Book From the Library"
+        tag: "Remove a Book From the Library",
+        type: 'danger'
       }]
     });
   }

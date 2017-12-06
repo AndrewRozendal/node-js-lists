@@ -8,7 +8,7 @@ block content
       h2= pageHeader.tagline
       .container.book-list
         each book in books
-          - const buttons = [{url: '#', tag: 'Remove this Book From the Library'}]
+          - const buttons = [{url: '#', tag: 'Remove this Book From the Library', type: 'danger'}]
           +writeBookCard(book, buttons)
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent

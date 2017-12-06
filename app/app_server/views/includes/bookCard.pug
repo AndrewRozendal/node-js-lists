@@ -24,7 +24,12 @@ mixin writeBookCard(book, buttons)
     .card-block
       each button in buttons
         - const url = button.url
-        a.btn.m-2.btn-primary(href=url) #{button.tag}
+        if button.type == "danger"
+          a.btn.m-2.btn-danger(href=url) #{button.tag}
+        else if button.type == "info"
+          a.btn.m-2.btn-info(href=url) #{button.tag}
+        else
+          a.btn.m-2.btn-primary(href=url) #{button.tag}
 
 mixin writeBookCardBlank()
   - const buttons = [{url: '#', tag: 'More Details'}, {url: '#', tag: 'Add To My Reading List'}]

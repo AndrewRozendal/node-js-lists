@@ -7,6 +7,11 @@ block content
       p= content
       each button in buttons
         - const url = button.url
-        a.btn.m-2.btn-primary(href=url) #{button.name}
+        if button.type == "danger"
+          a.btn.m-2.btn-danger(href=url) #{button.tag}
+        else if button.type == "success"
+          a.btn.m-2.btn-success(href=url) #{button.tag}
+        else
+          a.btn.m-2.btn-primary(href=url) #{button.tag}
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
