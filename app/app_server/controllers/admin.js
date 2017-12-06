@@ -1,5 +1,6 @@
 'use strict';
 const auth = require('basic-auth');
+const request = require('request');
 
 const apiOptions = {
   server: 'http://localhost:3000/api/'
@@ -90,46 +91,29 @@ const addBookToLibrary = function(req, res) {
     });
 };
 
-const removeBookFromLibrary = function(req, res) {
+// Linked with renderRemoveBookPage
+const removeBookFromLibrary = function(req, res){
+  //Request
+  const reqOptions = {
+    baseUrl: apiOptions.server,
+    url: '/books',
+    method: 'GET',
+    json: {}
+  };
+
+  request(reqOptions, function(err, apiRes, apiResBody){
+    renderRemoveBookPage(req, res, apiResBody);
+  });
+}
+
+const renderRemoveBookPage = function(req, res, data) {
     res.render('./admin/remove-book-from-library', { 
       pageHeader: {
         title: 'Admin - Remove Book From Library',
         tagline: 'Library Contents',
       },
       sideContent: "Info on how to use page here",
-      books: [{
-        title: 'The Art of War',
-        coverImage: {
-            image: '/images/artOfWarCover.jpg',
-            altText: 'Art of War Book Cover'
-        }, 
-        catchphrase: 'A timeless classic on warfare',
-        author: 'Sun Tzu',
-        ISBN: '34252353-34234-234234',
-        rating: '5/5'
-    },
-    {
-        title: 'The Art of War',
-        coverImage: {
-            image: '/images/artOfWarCover.jpg',
-            altText: 'Art of War Book Cover'
-        }, 
-        catchphrase: 'A timeless classic on warfare',
-        author: 'Sun Tzu',
-        ISBN: '34252353-34234-234234',
-        rating: '5/5'
-    },
-    {
-        title: 'The Art of War',
-        coverImage: {
-            image: '/images/artOfWarCover.jpg',
-            altText: 'Art of War Book Cover'
-        }, 
-        catchphrase: 'A timeless classic on warfare',
-        author: 'Sun Tzu',
-        ISBN: '34252353-34234-234234',
-        rating: '5/5'
-    }]
+      books: data
   });
 };
 

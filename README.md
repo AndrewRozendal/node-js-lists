@@ -21,6 +21,7 @@ Route Layouts:
 | Admin      |Admin Home Page                         |GET         |/api/admin/:adminid
 |            |Login to Admin                          |POST        |/api/admin/:adminid
 |            |Add book to the database                |PUT         |/api/admin/add-book-to-library/
+|            |List all books that can be removed      |GET         |/api/books
 |            |Remove book from database               |DELETE      |/api/admin/remove-book-from-library/:bookid
 
 When updating DB, need to run following commands for remote deploy:

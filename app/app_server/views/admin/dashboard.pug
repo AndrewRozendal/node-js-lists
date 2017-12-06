@@ -7,6 +7,6 @@ block content
       p= content
       each button in buttons
         - const url = button.url
-        a.nav-link(href=url) #{button.name}
+        a.btn.m-2.btn-primary(href=url) #{button.name}
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
