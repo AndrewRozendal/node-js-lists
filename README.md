@@ -10,20 +10,21 @@ http://html2jade.org/
 
 Routes:
 
-| Controller | Page / Screen                          | URL Endpoint                        | Implemented    |
-| ---------- |----------------------------------------|-------------------------------------| ---------------|
+| Controller | Page / Screen                          | URL Endpoint                        | Implemented    | Remarks |
+| ---------- |----------------------------------------|-------------------------------------| ---------------|---------|
 | Books      |List of All Books                       |/                                    | Yes            |
 |            |Get Book Details                        |/book/:bookid                        | Yes            |
-|            |List of Books in User Reading List      |/books/reading-list/:userid          | Yes            |
+|            |List of Books in User Reading List      |/books/reading-list/:userid          | Partially      | Page exists, no data to populate from DB with yet - join syntax?
 | Others     |About App                               |/about                               | Yes            |
-| Admin      |Admin Home Page                         |/admin/                              | Yes            |
+|            |Thank You Page                          |/about/thank-you                     | No             |
+| Admin      |Admin Home Page                         |/admin/                              | Partially      | No Login
 |            |Add book to the database                |/admin/add-book-to-library/          | Yes            |
 |            |Remove book from database               |/admin/remove-book-from-library/     | Yes            |
 
 API Layouts:
 
-| Controller | Page / Screen                          | HTTP VERB  | API URL Endpoint                                   | Implemented   |
-| ---------- |----------------------------------------| -----------|------------------------------------------------| --------------|
+| Controller | Page / Screen                          | HTTP VERB  | API URL Endpoint                               | Implemented   | Remarks |
+| ---------- |----------------------------------------| -----------|------------------------------------------------| --------------|---------|
 | Books      |List of All Books                       |GET         |/api/books                                      | Yes           |
 |            |Get Book Details                        |GET         |/api/books/book-details/:bookid                 | Yes           |
 |            |List of Books in User Reading List      |GET         |/api/books/reading-list/:userid                 | No            |
