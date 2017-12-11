@@ -8,21 +8,33 @@ https://codepen.io/pen/
 Pug Generator
 http://html2jade.org/
 
-Route Layouts:
+Routes:
 
-| Collection | Page / Screen                          | HTTP VERB  | URL Endpoint |
-| ---------- |----------------------------------------| -----------|----------------------------------------|
-| Books      |List of All Books                       |GET         |/api/books
-|            |Get Book Details                        |GET         |/api/books/book-details/:bookid
-|            |List of Books in User Reading List      |GET         |/api/books/reading-list/:userid
-|            |Add book to user reading list           |POST        |/api/books/reading-list/:userid/:bookid
-|            |Remove book from reading list           |POST        |/api/books/reading-list/:userid/:bookid
-| Others     |About App                               |GET         |/api/about
-| Admin      |Admin Home Page                         |GET         |/api/admin/:adminid
-|            |Login to Admin                          |POST        |/api/admin/:adminid
-|            |Add book to the database                |PUT         |/api/admin/add-book-to-library/
-|            |List all books that can be removed      |GET         |/api/books
-|            |Remove book from database               |DELETE      |/api/admin/remove-book-from-library/:bookid
+| Controller | Page / Screen                          | URL Endpoint                        | Implemented    |
+| ---------- |----------------------------------------|-------------------------------------| ---------------|
+| Books      |List of All Books                       |/                                    | Yes            |
+|            |Get Book Details                        |/book/:bookid                        | Yes            |
+|            |List of Books in User Reading List      |/books/reading-list/:userid          | Yes            |
+| Others     |About App                               |/about                               | Yes            |
+| Admin      |Admin Home Page                         |/admin/                              | Yes            |
+|            |Add book to the database                |/admin/add-book-to-library/          | Yes            |
+|            |Remove book from database               |/admin/remove-book-from-library/     | Yes            |
+
+API Layouts:
+
+| Controller | Page / Screen                          | HTTP VERB  | API URL Endpoint                                   | Implemented   |
+| ---------- |----------------------------------------| -----------|------------------------------------------------| --------------|
+| Books      |List of All Books                       |GET         |/api/books                                      | Yes           |
+|            |Get Book Details                        |GET         |/api/books/book-details/:bookid                 | Yes           |
+|            |List of Books in User Reading List      |GET         |/api/books/reading-list/:userid                 | No            |
+|            |Add book to user reading list           |POST        |/api/books/reading-list/:userid/:bookid         | No            |
+|            |Remove book from reading list           |POST        |/api/books/reading-list/:userid/:bookid         | No            |
+| Others     |About App                               |GET         |/api/about                                      | No            |
+| Admin      |Admin Home Page                         |GET         |/api/admin/:adminid                             | No            |
+|            |Login to Admin                          |POST        |/api/admin/:adminid                             | No            |
+|            |Add book to the database                |PUT         |/api/admin/add-book-to-library/                 | No            |
+|            |List all books that can be removed      |GET         |/api/books                                      | Yes           |
+|            |Remove book from database               |DELETE      |/api/admin/remove-book-from-library/:bookid     | No            |
 
 When updating DB, need to run following commands for remote deploy:
 
