@@ -4,9 +4,9 @@ include ../includes/bookCard
 block content
   h1.text-center.py-3= pageHeader.title
   .row
-    .book-details.col-12.col-xl-8
+    .book-details.col-12.col-xl-6
       h2= pageHeader.tagline
-      .container.col-12.col-md-4
+      .container#form.p-3
         .card
           .card-body
             h3.card-title.pb-3 New Book Form
@@ -22,7 +22,7 @@ block content
                 label.col-form-label.col-xl-4
                 .col-xl-6
                   button.btn.btn-primary(type='submit') Add New Book to Library
-    .side-bar-text#side-bar-text.col-12.col-xl-4.pt-5
+    .side-bar-text#side-bar-text.col-12.col-xl-6.pt-5
       p= sideContent
       .container#preview
         +writeBookCardBlank
