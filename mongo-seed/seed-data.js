@@ -40,7 +40,10 @@ db.books.save({
     detailedDescription: 'Additional details are in this section.  This should not appear on the home page'
 });
 
+// used to populate readingList with dummy test data
+test_book_id = ObjectId();
 db.books.save({
+    _id: test_book_id,
     title: 'Nineteen Eighty-four',
     coverImage: {
         _id: ObjectId(),
@@ -54,8 +57,16 @@ db.books.save({
     detailedDescription: 'Additional details are in this section.  This should not appear on the home page'
 });
 
+// used to populate readingList with dummy test data
+test_user_id = ObjectId();
 db.users.save({
+    _id: test_user_id,
     userName: 'testUser',
     password: 'encryptedPassword',
     email: 'test@foo.foo'
-})
+});
+
+db.readingLists.save({
+    userID: test_user_id,
+    bookID: test_book_id
+});

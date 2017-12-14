@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 const readingList_schema = new mongoose.Schema({
     userID: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     bookID: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     } 
 });
