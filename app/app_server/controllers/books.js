@@ -83,7 +83,7 @@ const readingList = function(req, res){
     //Request
     const reqOptions = {
         baseUrl: apiOptions.server,
-        url: `/books/reading-list/${req.params.userid}`,
+        url: `/books/reading-list/`,
         method: 'GET',
         json: {}
     };
@@ -99,9 +99,6 @@ const renderReadingListPage = function(req, res, data){
         errorMsg = 'API lookup error';
         data = [];
     }
-
-    // TODO: currently not implemented, so temp errorMsg:
-    errorMsg = 'Feature not implemented yet';
 
     res.render('./books/reading-list', {
         title: 'Your Reading List',

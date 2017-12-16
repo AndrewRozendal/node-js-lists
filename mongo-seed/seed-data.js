@@ -66,7 +66,7 @@ db.users.save({
     email: 'test@foo.foo'
 });
 
-db.readingLists.save({
-    userID: test_user_id,
-    bookID: test_book_id
+db.readinglists.save({
+    userId: test_user_id,
+    bookId: test_book_id
 });

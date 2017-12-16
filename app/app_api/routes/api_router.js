@@ -20,7 +20,7 @@ router
 
 /* -- GET USER READING LIST -- */
 router
-    .route('/books/reading-list/:userid')
+    .route('/books/reading-list/')
     .get(booksAPIController.readingListByName);
 
 /* -- ADD BOOK TO USER READING LIST -- */

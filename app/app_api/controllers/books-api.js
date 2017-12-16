@@ -1,8 +1,8 @@
 'use strict';
 const mongoose = require('mongoose');
 const bookModel = mongoose.model('book');
-const readingListModel = mongoose.model('readingList');
 const userModel = mongoose.model('user');
+const readingListModel = mongoose.model('readinglist');
 
 const booksListByName = function (req, res){
     bookModel.find({}, {title: 1, coverImage: 1, catchphrase: 1, author: 1, ISBN: 1, rating: 1}).sort({'title': 1}).exec( function(err, books) {
@@ -58,11 +58,7 @@ const booksReadOne = function (req, res){
 };
 
 const readingListByName = function(req, res){
-    // Issue:
-    //db.readingLists.find({userID: "5a32e5c7a3bffbbfd9513739"}) -- returns nothing, even though there is a matching userID
-    //> db.readingLists.find({userID: ObjectId("5a32e5c7a3bffbbfd9513739")})  -- correctly returns matching document
-    //{ "_id" : ObjectId("5a32e5c7a3bffbbfd951373a"), "userID" : ObjectId("5a32e5c7a3bffbbfd9513739"), "bookID" : ObjectId("5a32e5c7a3bffbbfd9513737") }
-    
+    //currently only one user so just findOne on users temporarily
     //look up ID of test user
     //TODO: accept POST parameter instead in future
     userModel.findOne({}, { _id: 1 }).exec(function(err, user){
@@ -80,48 +76,47 @@ const readingListByName = function(req, res){
             return;
         //CASE: successful query
         } else {
-            // //debug code
-            res
-            .status(200)
-            .json(user);
+            // now find all books that this user has in readinglist
+            readingListModel.find({userId: user._id}, {bookId: 1})
+            .exec(function(err, bookIDs){
+                if(!bookIDs){
+                    res
+                        .status(404)
+                        .json({
+                            "message": "no bookIDs found"
+                        });
+                    return;
+                } else if(err){
+                    res
+                        .status(404)
+                        .json(err);
+                    return;
+                //CASE: successful query
+                } else {
+                    // transform bookIDs from array with key value pairs to just array for easy iteration for db
+                    let ids = [bookIDs.length];
+                    for (let i = 0; i < bookIDs.length; i++){
+                        ids[i] = bookIDs[i].bookId;
+                    }
+                    // now grab all those book details and return as array
+                    bookModel.find({ _id: {$in: ids}}, {title: 1, coverImage: 1, catchphrase: 1, author: 1, ISBN: 1, rating: 1}).sort({'title': 1}).exec( function(err, books) {
+                        //CASE: error object returned
+                        if(err){
+                            res
+                                .status(404)
+                                .json(err);
+                            return;
+                        //CASE: successful query
+                        } else {
+                            res
+                                .status(200)
+                                .json(books);
+                        }
+                    });
+                }
+            });
         }
     });
-
-    // // res.status(200).json(currentUser)
-
-    // //TODO temp!
-    // let currentUserID = "5a32e5c7a3bffbbfd9513739";
-    // //query readingListModel and return all bookIDs that belong to passed user
-    // let bookIDs;
-    // readingListModel.find({userID : "5a32e5c7a3bffbbfd9513739"}).exec( function(err, bookIDs){
-    //     if(err){
-    //         res
-    //             .status(404)
-    //             .json(err);
-    //         return;
-    //     //CASE: successful query
-    //     } else {
-    //         res
-    //             .status(200)
-    //             .json(bookIDs);
-    //     }
-    // });
-
-    // //query bookModel and return all book data that matches bookIDs we retrieved in prev step
-    // bookModel.find({ _id: { $in: bookIDs}}, {title: 1, coverImage: 1, catchphrase: 1, author: 1, ISBN: 1, rating: 1}).sort({'title': 1}).exec( function(err, books) {
-    //     //CASE: error object returned
-    //     if(err){
-    //         res
-    //             .status(404)
-    //             .json(err);
-    //         return;
-    //     //CASE: successful query
-    //     } else {
-    //         res
-    //             .status(200)
-    //             .json(books);
-    //     }
-    // });
 };
 
 const readingListAddOne = function (req, res){
