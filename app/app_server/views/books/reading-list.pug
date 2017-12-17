@@ -9,7 +9,20 @@ block content
         if errorMsg
           .alert.alert-danger= errorMsg
         each book in books
-          - const buttons = [{url: `/book/${book._id}`, tag: 'More Details', type: 'info'}, {url: '#', tag: 'Remove From My Reading List', type: 'danger'}]
+          - const buttons = [{url: `/book/${book._id}`, tag: 'More Details', type: 'info'}, {tag: 'Remove From My Reading List', type: 'danger', clickval: `removeFromReadingList('${book._id}')`}]
           +writeBookCard(book, buttons)
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
+  
+  script.
+    //- onclick for removing a book from readingList
+    function removeFromReadingList(bookId){
+      let xhttp = new XMLHttpRequest();
+      apiAddress = "/api/books/reading-lists/testUser/books/" + bookId;
+      xhttp.open("DELETE", apiAddress, false);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send("bookId=" + bookId);
+      alert("done, status: " + xhttp.status);
+      //reload the page - later do this with Angular?
+      window.location.reload(true);
+    }

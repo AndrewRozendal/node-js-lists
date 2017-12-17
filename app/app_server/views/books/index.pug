@@ -10,13 +10,13 @@ block content
         if errorMsg
           .alert.alert-danger= errorMsg
         each book in books
-          - const buttons = [{url: `/book/${book._id}`, tag: 'More Details', type: 'info'}, {url: '#', tag: 'Add To My Reading List', clickval: `addToReadingList('${book._id}')`}]
+          - const buttons = [{url: `/book/${book._id}`, tag: 'More Details', type: 'info'}, {tag: 'Add To My Reading List', clickval: `addToReadingList('${book._id}')`}]
           +writeBookCard(book, buttons)
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
   
   script.
-    //- onclick for adding book to library
+    //- onclick for adding book to reading-List
     function addToReadingList(bookId){
       let xhttp = new XMLHttpRequest();
       xhttp.open("POST", "/api/books/reading-lists/testUser/books", false);
