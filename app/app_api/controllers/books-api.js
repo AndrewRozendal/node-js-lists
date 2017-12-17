@@ -123,16 +123,22 @@ const readingListAddOne = function (req, res){
     res
     .status(404)
     .json({
-        "message": "Not yet implemented"
+        "message": "AddOne Not yet implemented"
     });
+
+    res
+    .status(201)
+    .json(book)
 };
 
 const readingListRemoveOne = function (req, res){
     res
     .status(404)
     .json({
-        "message": "Not yet implemented"
+        "message": "RemoveOne Not yet implemented"
     });
+
+    //response is null for delete
 };
 
 //- export all functions for use by routes

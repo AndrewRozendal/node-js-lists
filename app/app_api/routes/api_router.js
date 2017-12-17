@@ -20,18 +20,18 @@ router
 
 /* -- GET USER READING LIST -- */
 router
-    .route('/books/reading-list/')
+    .route('/books/reading-lists/')
     .get(booksAPIController.readingListByName);
 
 /* -- ADD BOOK TO USER READING LIST -- */
 router
-    .route('/books/reading-list/:userid/:bookid')
+    .route('/books/reading-lists/:userid/books/')
     .post(booksAPIController.readingListAddOne);
 
 /* -- REMOVE BOOK FROM USER READING LIST -- */
 router
-    .route('/books/reading-list/:userid/:bookid')
-    .post(booksAPIController.readingListRemoveOne);
+    .route('/books/reading-lists/:userid/books/:bookid')
+    .delete(booksAPIController.readingListRemoveOne);
 
 
 

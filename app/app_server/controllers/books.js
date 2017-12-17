@@ -83,7 +83,7 @@ const readingList = function(req, res){
     //Request
     const reqOptions = {
         baseUrl: apiOptions.server,
-        url: `/books/reading-list/`,
+        url: `/books/reading-lists/`,
         method: 'GET',
         json: {}
     };
