@@ -7,7 +7,17 @@ block content
     if errorMsg
       .alert.alert-danger= errorMsg
     .book-details.col-12.col-xl-8
-      - const buttons = [{url: '#', tag: 'Add to My Reading List'}]
+      - const buttons = [{tag: 'Add To My Reading List', clickval: `addToReadingList('${book._id}')`}]
       +writeBookCard(book, buttons)
   .side-bar-text.col-12.col-xl-4.pt-5
     p= sideContent
+  
+  script.
+    //- onclick for adding book to reading-List
+    function addToReadingList(bookId){
+      let xhttp = new XMLHttpRequest();
+      xhttp.open("POST", "/api/books/reading-lists/testUser/books", false);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send("bookId=" + bookId);
+      alert("done, status: " + xhttp.status);
+    }

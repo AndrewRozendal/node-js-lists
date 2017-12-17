@@ -6,8 +6,8 @@ block content
   .row
     .book-details.col-12.col-xl-8
       .container.book-list
-        if errorMsg
-          .alert.alert-danger= errorMsg
+        if warning
+          .alert.alert-warning= warning
         each book in books
           - const buttons = [{url: `/book/${book._id}`, tag: 'More Details', type: 'info'}, {tag: 'Remove From My Reading List', type: 'danger', clickval: `removeFromReadingList('${book._id}')`}]
           +writeBookCard(book, buttons)
@@ -25,4 +25,4 @@ block content
       alert("done, status: " + xhttp.status);
       //reload the page - later do this with Angular?
       window.location.reload(true);
-    }
+    } 

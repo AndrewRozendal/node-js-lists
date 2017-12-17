@@ -94,9 +94,9 @@ const readingList = function(req, res){
 }
 
 const renderReadingListPage = function(req, res, data){
-    let errorMsg = null;
+    let msg = null;
     if(!(data instanceof Array)){
-        errorMsg = 'API lookup error';
+        msg = 'Your reading list is empty, try adding something first!';
         data = [];
     }
 
@@ -108,7 +108,7 @@ const renderReadingListPage = function(req, res, data){
         },
         sideContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum non neque nec vulputate. Maecenas et sagittis nunc, ut accumsan ipsum. In eros sem, convallis rutrum interdum dignissim, viverra sit amet risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec venenatis diam et nibh laoreet, id sagittis mi elementum. Maecenas eget ex sodales, luctus libero et, laoreet sapien.  Aenean dignissim euismod fringilla. Sed id maximus libero.',
         books: data,
-        errorMsg: errorMsg
+        warning: msg
     });
 }
 
