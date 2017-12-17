@@ -160,7 +160,7 @@ const readingListAddOne = function (req, res){
                                 return;
                             } else {
                                 // add userId and bookId to readingList
-                                readingListModel.create({userId: user._id, bookId: book._id}).exec(function(err, readingListBook){
+                                readingListModel.create({userId: user._id, bookId: book._id}, function(err, readingListBook){
                                     if(err){
                                         res
                                         .status(400)
