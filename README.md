@@ -14,7 +14,7 @@ Routes:
 | ---------- |----------------------------------------|-------------------------------------| ---------------|---------|
 | Books      |List of All Books                       |/                                    | Yes            |
 |            |Get Book Details                        |/book/:bookid                        | Yes            |
-|            |List of Books in User Reading List      |/books/reading-list/:userid          | Partially      | Page exists, no data to populate from DB with yet - join syntax?
+|            |List of Books in User Reading List      |/books/reading-list/                  | Partially      | Page exists, no data to populate from DB with yet - join syntax?
 | Others     |About App                               |/about                               | Yes            |
 |            |Thank You Page                          |/about/thank-you                     | No             |
 | Admin      |Admin Home Page                         |/admin/                              | Partially      | No Login
@@ -27,9 +27,9 @@ API Layouts:
 | ---------- |----------------------------------------| -----------|------------------------------------------------| --------------|---------|
 | Books      |List of All Books                       |GET         |/api/books                                      | Yes           |
 |            |Get Book Details                        |GET         |/api/books/book-details/:bookid                 | Yes           |
-|            |List of Books in User Reading List      |GET         |/api/books/reading-list/:userid                 | No            |
-|            |Add book to user reading list           |POST        |/api/books/reading-list/:userid/:bookid         | No            |
-|            |Remove book from reading list           |POST        |/api/books/reading-list/:userid/:bookid         | No            |
+|            |List of Books in User Reading List      |GET         |/api/books/reading-lists/                        | No            |
+|            |Add book to user reading list           |POST        |/api/books/reading-lists/:userid/books/         | Partially      | Assume same user for now
+|            |Remove book from reading list           |POST        |/api/books/reading-lists/:userid/books/:bookid         | No            |
 | Others     |About App                               |GET         |/api/about                                      | No            |
 | Admin      |Admin Home Page                         |GET         |/api/admin/:adminid                             | No            |
 |            |Login to Admin                          |POST        |/api/admin/:adminid                             | No            |

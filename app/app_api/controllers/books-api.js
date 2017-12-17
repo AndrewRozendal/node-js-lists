@@ -120,15 +120,66 @@ const readingListByName = function(req, res){
 };
 
 const readingListAddOne = function (req, res){
-    res
-    .status(404)
-    .json({
-        "message": "AddOne Not yet implemented"
-    });
-
-    res
-    .status(201)
-    .json(book)
+    // confirm body contains a bookId to add
+    if(req.body && req.body.bookId){
+        // confirm bookId is valid
+        bookModel.findById(req.body.bookId).exec(function (err, book){
+            if(!book){
+                res.status(400).json({"message": "bookId is not valid"});
+                return;
+            } else if(err){
+                res.status(400).json(err);
+                return;
+            } else {
+                //currently only one user so just findOne on users temporarily
+                //look up ID of test user
+                //TODO: accept POST parameter instead in future
+                userModel.findOne({}, { _id: 1 }).exec(function(err, user){
+                    if(!user){
+                        res
+                            .status(404)
+                            .json({
+                                "message": "no users found"
+                            });
+                        return;
+                    } else if(err){
+                        res
+                            .status(404)
+                            .json(err);
+                        return;
+                    //CASE: successful query
+                    } else {
+                        // check if userId and bookId pair already exists in db, if so abort
+                        readingListModel.findOne({userId: user._id, bookId: book._id}).exec(function (err, readingListBook){
+                            if(readingListBook){
+                                res
+                                .status(409)
+                                .json({
+                                    "message": "Object already exists with same data"
+                                });
+                                return;
+                            } else {
+                                // add userId and bookId to readingList
+                                readingListModel.create({userId: user._id, bookId: book._id}).exec(function(err, readingListBook){
+                                    if(err){
+                                        res
+                                        .status(400)
+                                        .json(err);
+                                    } else {
+                                        res
+                                        .status(201)
+                                        .json(readingListBook);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    } else {
+        res.status(400).json({"message": "invalid post request"});
+    }
 };
 
 const readingListRemoveOne = function (req, res){
