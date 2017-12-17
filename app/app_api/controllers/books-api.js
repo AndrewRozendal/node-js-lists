@@ -183,13 +183,64 @@ const readingListAddOne = function (req, res){
 };
 
 const readingListRemoveOne = function (req, res){
-    res
-    .status(404)
-    .json({
-        "message": "RemoveOne Not yet implemented"
-    });
-
-    //response is null for delete
+    // confirm body contains a bookId to remove
+    if(req.body && req.body.bookId){
+        //currently only one user so just findOne on users temporarily
+        //look up ID of test user
+        //TODO: accept POST parameter instead in future
+        userModel.findOne({}, { _id: 1 }).exec(function(err, user){
+            if(!user){
+                res
+                    .status(404)
+                    .json({
+                        "message": "no users found"
+                    });
+                return;
+            } else if(err){
+                res
+                    .status(404)
+                    .json(err);
+                return;
+            //CASE: successful query
+            } else {
+                //see if book & user pair exists in readingList
+                readingListModel.findOne({userId: user._id, bookId: req.body.bookId}).exec(function(err, book){
+                    if(!book){
+                        res
+                            .status(404)
+                            .json({"message": "no matching user/book found to remove"});
+                        return;
+                    } else if (err) {
+                        res
+                            .status(404)
+                            .json(err);
+                        return;
+                    } else {
+                        //remove the book
+                        readingListModel.findByIdAndRemove(book._id).exec(function(err, book){
+                            if(err){
+                                res
+                                    .status(404)
+                                    .json(err);
+                                return;
+                            } else {
+                                //response is null for delete
+                                res
+                                    .status(204)
+                                    .json(null);
+                                return;
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    } else {
+        res
+        .status(404)
+        .json({"message": "invalid delete request"});
+        return;
+    }
 };
 
 //- export all functions for use by routes
