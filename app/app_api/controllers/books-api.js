@@ -183,11 +183,11 @@ const readingListAddOne = function (req, res){
 };
 
 const readingListRemoveOne = function (req, res){
-    // confirm body contains a bookId to remove
-    if(req.body && req.body.bookId){
+    // confirm parameters contains a bookId to remove
+    if(req.params && req.params.userid && req.params.bookid){
         //currently only one user so just findOne on users temporarily
         //look up ID of test user
-        //TODO: accept POST parameter instead in future
+        //TODO: use req.params.userid instead
         userModel.findOne({}, { _id: 1 }).exec(function(err, user){
             if(!user){
                 res
@@ -204,7 +204,7 @@ const readingListRemoveOne = function (req, res){
             //CASE: successful query
             } else {
                 //see if book & user pair exists in readingList
-                readingListModel.findOne({userId: user._id, bookId: req.body.bookId}).exec(function(err, book){
+                readingListModel.findOne({userId: user._id, bookId: req.params.bookid}).exec(function(err, book){
                     if(!book){
                         res
                             .status(404)
@@ -243,11 +243,49 @@ const readingListRemoveOne = function (req, res){
     }
 };
 
+const readingListRemoveAll = function(req, res){
+    // confirm parameters contains a bookId to remove
+    if(req.params && req.params.userid){
+        //currently only one user so just findOne on users temporarily
+        //look up ID of test user
+        //TODO: use req.params.userid instead
+        userModel.findOne({}, { _id: 1 }).exec(function(err, user){
+            if(!user){
+                res
+                    .status(404)
+                    .json({
+                        "message": "no users found"
+                    });
+                return;
+            } else if(err){
+                res
+                    .status(404)
+                    .json(err);
+                return;
+            //CASE: successful query
+            } else {
+                readingListModel.remove({userId: user._id}, function(err, result){
+                    if(err){
+                        res.status(404).json(err);
+                        return;
+                    } else {
+                        res.status(200).json(null);
+                        return;
+                    }
+                });
+            }
+        });
+    } else {
+        res.status(404).json({"message": "invalid delete request"});
+    }
+}
+
 //- export all functions for use by routes
 module.exports = {
     booksListByName,
     booksReadOne,
     readingListByName,
     readingListAddOne,
-    readingListRemoveOne
+    readingListRemoveOne,
+    readingListRemoveAll
 };

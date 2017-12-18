@@ -14,4 +14,6 @@ block content
           +writeBookCard(book, buttons)
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
+      btn.m-2.btn-danger(onclick='clearReadingList()') Clear Reading List
   +removeFromReadingList
+  +clearReadingList

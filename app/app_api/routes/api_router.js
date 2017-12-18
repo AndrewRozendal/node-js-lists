@@ -33,6 +33,11 @@ router
     .route('/books/reading-lists/:userid/books/:bookid')
     .delete(booksAPIController.readingListRemoveOne);
 
+/* -- REMOVE BOOK FROM USER READING LIST -- */
+router
+    .route('/books/reading-lists/:userid')
+    .delete(booksAPIController.readingListRemoveAll);
+
 
 
 /* -- OTHERS -- */
