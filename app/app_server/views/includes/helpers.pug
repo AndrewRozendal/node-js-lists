@@ -1,0 +1,24 @@
+mixin addToReadingList()
+  script.
+    //- onclick for adding book to reading-List
+    function addToReadingList(bookId){
+      let xhttp = new XMLHttpRequest();
+      xhttp.open("POST", "/api/books/reading-lists/testUser/books", false);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send("bookId=" + bookId);
+      alert("done, status: " + xhttp.status);
+    }
+
+mixin removeFromReadingList()
+  script.
+    //- onclick for removing a book from readingList
+    function removeFromReadingList(bookId){
+      let xhttp = new XMLHttpRequest();
+      apiAddress = "/api/books/reading-lists/testUser/books/" + bookId;
+      xhttp.open("DELETE", apiAddress, false);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send("bookId=" + bookId);
+      alert("done, status: " + xhttp.status);
+      //reload the page - later do this with Angular?
+      window.location.reload(true);
+    } 

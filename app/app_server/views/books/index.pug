@@ -1,5 +1,6 @@
 extends ../layout
 include ../includes/bookCard
+include ../includes/helpers
 
 block content
   h1.text-center.py-3= pageHeader.title
@@ -15,12 +16,4 @@ block content
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
   
-  script.
-    //- onclick for adding book to reading-List
-    function addToReadingList(bookId){
-      let xhttp = new XMLHttpRequest();
-      xhttp.open("POST", "/api/books/reading-lists/testUser/books", false);
-      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhttp.send("bookId=" + bookId);
-      alert("done, status: " + xhttp.status);
-    }
+  +addToReadingList
