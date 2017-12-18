@@ -14,6 +14,10 @@ block content
           +writeBookCard(book, buttons)
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
-      btn.m-2.btn-danger(onclick='clearReadingList()') Clear Reading List
+      //- Button trigger modal
+      btn.m-2.btn-danger(type='button', onclick="$('#confirmDeleteAllModal').modal('show')") Clear Reading List
   +removeFromReadingList
   +clearReadingList
+  
+  //- Modals
+  +addConfirmationModal("confirmDeleteAllModal", "Clear Reading List", "Are you SURE you want to delete your entire library? This action cannot be undone", "clearReadingList()")
