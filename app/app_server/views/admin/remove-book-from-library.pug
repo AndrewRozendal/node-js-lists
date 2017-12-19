@@ -1,5 +1,6 @@
 extends ../layout
 include ../includes/bookCard
+include ../includes/adminhelpers
 
 block content
   h1.text-center.py-3= pageHeader.title
@@ -8,7 +9,8 @@ block content
       h2= pageHeader.tagline
       .container.book-list
         each book in books
-          - const buttons = [{url: '#', tag: 'Remove this Book From the Library', type: 'danger'}]
+          - const buttons = [{tag: 'Remove this Book From the Library', type: 'danger', clickval: `removeBookFromLibrary('${book._id}')`}]
           +writeBookCard(book, buttons)
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
+  +removeBookFromLibrary()

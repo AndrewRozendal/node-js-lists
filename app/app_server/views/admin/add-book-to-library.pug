@@ -1,5 +1,6 @@
 extends ../layout
 include ../includes/bookCard
+include ../includes/adminhelpers
 
 block content
   h1.text-center.py-3= pageHeader.title
@@ -10,7 +11,7 @@ block content
         .card
           .card-body
             h3.card-title.pb-3 New Book Form
-            form(name='addBook', action='#', method='post')
+            form(name='addBook')
               each column in BookColumns
                 .form-group.row
                   - const type = column.type
@@ -21,7 +22,7 @@ block content
               .form-group.row
                 label.col-form-label.col-xl-4
                 .col-xl-6
-                  button.btn.btn-primary(type='submit') Add New Book to Library
+                  button.btn.btn-primary(type='button', onclick='addBookToLibrary()') Add New Book to Library
     .side-bar-text#side-bar-text.col-12.col-xl-6.pt-5
       p= sideContent
       .container#preview
@@ -40,3 +41,4 @@ block content
         document.getElementById(correspondingID).innerHTML = element.value;
       }
     }
+  +addBookToLibrary()

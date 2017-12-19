@@ -41,7 +41,7 @@ mixin writeBookCard(book, buttons)
             a.btn.m-2.btn-primary(href=url) #{button.tag}
 
 mixin writeBookCardBlank()
-  - const buttons = [{url: '#', tag: 'More Details'}, {url: '#', tag: 'Add To My Reading List'}]
+  - const buttons = [{url: '#', tag: 'More Details', type: 'info'}, {url: '#', tag: 'Add To My Reading List'}]
   .card.my-5.text-center
     img.card-img-top(src='null', alt='Image preview not supported', style='width:20em;height:20em;margin:auto')
     .card-block
@@ -63,4 +63,7 @@ mixin writeBookCardBlank()
     .card-block
       each button in buttons
         - const url = button.url
-        a.btn.m-2.btn-primary(href=url, disabled='disabled') #{button.tag}
+        if button.type == 'info'
+          a.btn.m-2.btn-info(href=url, disabled) #{button.tag}
+        else
+          a.btn.m-2.btn-primary(href=url, disabled) #{button.tag}

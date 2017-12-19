@@ -33,7 +33,7 @@ API Layouts:
 | Others     |About App                               |GET         |/api/about                                      | No            |
 | Admin      |Admin Home Page                         |GET         |/api/admin/:adminid                             | No            |
 |            |Login to Admin                          |POST        |/api/admin/:adminid                             | No            |
-|            |Add book to the database                |PUT         |/api/admin/add-book-to-library/                 | No            |
+|            |Add book to the database                |POST        |/api/admin/add-book-to-library/                 | No            |
 |            |List all books that can be removed      |GET         |/api/books                                      | Yes           |
 |            |Remove book from database               |DELETE      |/api/admin/remove-book-from-library/:bookid     | No            |
 

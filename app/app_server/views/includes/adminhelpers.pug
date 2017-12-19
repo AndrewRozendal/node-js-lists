@@ -1,0 +1,28 @@
+mixin addBookToLibrary()
+  script.
+    function addBookToLibrary(){
+      let xhttp = new XMLHttpRequest();
+      apiAddress = "/api/admin/add-book-to-library/";
+      alert(apiAddress);
+      xhttp.open("POST", apiAddress, false);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send(formData = new FormData('addBook'));
+      alert("done, status: " + xhttp.status + xhttp.responseText);
+
+      //- reload the page - later do this with Angular?
+      window.location.reload(true);
+    }
+
+mixin removeBookFromLibrary()
+  script.
+    function removeBookFromLibrary(id){
+      let xhttp = new XMLHttpRequest();
+      apiAddress = "/api/admin/remove-book-from-library/" + id;
+      alert(apiAddress);
+      xhttp.open("DELETE", apiAddress, false);
+      xhttp.send();
+      alert("done, status: " + xhttp.status + xhttp.responseText);
+
+      //- reload the page - later do this with Angular?
+      window.location.reload(true);
+    }
