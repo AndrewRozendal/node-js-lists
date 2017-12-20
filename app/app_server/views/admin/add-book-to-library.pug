@@ -11,7 +11,7 @@ block content
         .card
           .card-body
             h3.card-title.pb-3 New Book Form
-            form(name='addBook')
+            form(id='addBook')
               each column in BookColumns
                 .form-group.row
                   - const type = column.type

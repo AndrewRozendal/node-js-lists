@@ -48,20 +48,22 @@ router
 
 
 /* -- ADMIN -- */
-/* -- CHECK ADMIN CREDENTIALS -- */
-router
-    .route('/admin/:adminid')
-    .post(adminAPIController.checkCredentials)
-    .get(adminAPIController.getAdminDashboard);
-
 /* -- ADD A BOOK TO THE DB -- */
 router
-    .route('/admin/add-book-to-library/:newBook')
+    .route('/admin/add-book-to-library/')
     .post(adminAPIController.addBookToLibrary);
 
 /* -- REMOVE A BOOK FROM THE DB -- */
 router
     .route('/admin/remove-book-from-library/:bookid')
     .delete(adminAPIController.removeBookFromLibrary);
+
+/* -- CHECK ADMIN CREDENTIALS -- */
+// this needs to be last because /admin/:adminid will incorrrectly detect
+// /admin/add-book-to-library as an :adminid instead...
+router
+    .route('/admin/:adminid')
+    .post(adminAPIController.checkCredentials)
+    .get(adminAPIController.getAdminDashboard);
 
 module.exports = router;
