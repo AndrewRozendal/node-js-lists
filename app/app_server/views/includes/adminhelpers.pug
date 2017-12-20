@@ -4,13 +4,11 @@ mixin addBookToLibrary()
       //- see https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_forms_through_JavaScript
       let xhttp = new XMLHttpRequest();
       apiAddress = "/api/admin/add-book-to-library/";
-      alert(apiAddress);
       
       let urlEncodedData = "";
       let urlEncodedDataPairs = [];
       let formData = new FormData(document.getElementById('addBook'));
       for (let pair of formData.entries()){
-        //alert(pair[0]+ ', ' + pair[1]);
         urlEncodedDataPairs.push(encodeURIComponent(pair[0]) + '=' + encodeURIComponent(pair[1]));
       }
       urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
@@ -21,7 +19,7 @@ mixin addBookToLibrary()
       alert("done, status: " + xhttp.status + xhttp.responseText);
 
       //- reload the page - later do this with Angular?
-      //window.location.reload(true);
+      window.location.reload(true);
     }
 
 mixin removeBookFromLibrary()

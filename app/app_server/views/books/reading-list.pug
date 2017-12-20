@@ -15,7 +15,7 @@ block content
     .side-bar-text.col-12.col-xl-4.pt-5
       p= sideContent
       //- Button trigger modal
-      btn.m-2.btn-danger(type='button', onclick="$('#confirmDeleteAllModal').modal('show')") Clear Reading List
+      #clearbtn.btn.m-2.btn-danger(type='button', onclick="$('#confirmDeleteAllModal').modal('show')") Clear Reading List
   +removeFromReadingList
   +clearReadingList
   
