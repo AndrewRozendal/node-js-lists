@@ -9,9 +9,9 @@ const bodyParser = require('body-parser');
 const subdomain = require('express-subdomain');
 
 require('./app_api/models/db');
-const listRouter = require('./app_server/routes/app_router');
+const listRouter = require('./app_server/routes/list_router');
 const apiRouter = require('./app_api/routes/api_router');
-//const eportfolioRouter = require()
+const eportfolioRouter = require('./app_server/routes/eportfolio_router');
 
 const app = express();
 
@@ -28,8 +28,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(subdomain('lists', listRouter));
-//app.use('/', eportfolioRouter);
 app.use('/api', apiRouter);
+app.use('/', eportfolioRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
