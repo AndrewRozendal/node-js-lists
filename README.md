@@ -10,6 +10,8 @@ http://html2jade.org/
 
 Routes:
 
+Lists: lists.andrewrozendal.ca
+
 | Controller | Page / Screen                          | URL Endpoint                        | Implemented    | Remarks |
 | ---------- |----------------------------------------|-------------------------------------| ---------------|---------|
 | Books      |List of All Books                       |/                                    | Yes            |
@@ -20,6 +22,17 @@ Routes:
 | Admin      |Admin Home Page                         |/admin/                              | Partially      | No Login
 |            |Add book to the database                |/admin/add-book-to-library/          | Yes            |
 |            |Remove book from database               |/admin/remove-book-from-library/     | Yes            |
+
+E-Portfolio: andrewrozendal.ca
+
+| Controller | Page / Screen                          | URL Endpoint                        | Implemented    | Remarks |
+| ---------- |----------------------------------------|-------------------------------------| ---------------|---------|
+| ePortfolio | Home Page | / | Yes | |
+| ePortfolio | About Me | /about | Yes | |
+| ePortfolio | Resume | /resume | Yes | |
+| ePortfolio | Examples | /examples | Yes | |
+| ePortfolio | Blog | /blog | No | |
+| ePortfolio | Contact Me | /contact | Yes | |
 
 API Layouts:
 
