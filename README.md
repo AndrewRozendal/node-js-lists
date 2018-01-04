@@ -43,3 +43,7 @@ When updating DB, need to run following commands for remote deploy:
 2. cd docker-entrypoint-initdb.d
 3. mongodump --archive=dump.gz --gzip --db rozendal-lists
 4. git commit & push to master
+
+To add npm module:
+winpty docker exec -it node bash
+npm install packageName --save

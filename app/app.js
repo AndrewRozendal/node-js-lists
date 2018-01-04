@@ -6,10 +6,12 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const subdomain = require('express-subdomain');
 
 require('./app_api/models/db');
-const appRouter = require('./app_server/routes/app_router');
+const listRouter = require('./app_server/routes/app_router');
 const apiRouter = require('./app_api/routes/api_router');
+//const eportfolioRouter = require()
 
 const app = express();
 
@@ -25,7 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', appRouter);
+app.use(subdomain('lists', listRouter));
+//app.use('/', eportfolioRouter);
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
