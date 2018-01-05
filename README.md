@@ -60,3 +60,9 @@ When updating DB, need to run following commands for remote deploy:
 To add npm module:
 winpty docker exec -it node bash
 npm install packageName --save
+
+For local development:
+With subdomains, needed to add following to hosts file:
+127.0.0.1	localhost.local
+127.0.0.1	lists.localhost.local
+127.0.0.1	api.localhost.local

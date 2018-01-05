@@ -26,4 +26,12 @@ router.get('/admin/add-book-to-library', adminController.addBookToLibrary);
 /* GET the remove book from library page */
 router.get('/admin/remove-book-from-library', adminController.removeBookFromLibrary);
 
+// If we hit here, throw 404 error
+router.get('*', function(req, res, next){
+    //res.status(404).send('ERROR')
+    let err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
 module.exports = router;
