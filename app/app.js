@@ -12,11 +12,12 @@ require('./app_api/models/db');
 const listRouter = require('./app_server/routes/list_router');
 const apiRouter = require('./app_api/routes/api_router');
 const eportfolioRouter = require('./app_server/routes/eportfolio_router');
+const capstoneRouter = require('./capstoneEPortfolio/routes/capstoneRouter');
 
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'app_server', 'views'));
+app.set('views', [path.join(__dirname, 'app_server', 'views'), path.join(__dirname, 'capstoneEPortfolio', 'views')]);
 app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
@@ -28,6 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(subdomain('lists', listRouter));
+app.use(subdomain('capstone', capstoneRouter));
 app.use('/api', apiRouter);
 app.use('/', eportfolioRouter);
 
@@ -46,7 +48,11 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  if(req.subdomains[0] == 'capstone'){
+    res.render('capstoneError');
+  } else {
+    res.render('error');
+  }
 });
 
 module.exports = app;
