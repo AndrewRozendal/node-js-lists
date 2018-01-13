@@ -1,12 +1,14 @@
 'use strict';
 const auth = require('basic-auth');
 
+const ePortfolioViews = "/home/node/app/ePortfolio/views/"
+
 const home = function(req, res){
-    res.render('./ePortfolio/home');
+    res.render(ePortfolioViews + "home");
 };
 
 const about = function(req, res){
-    res.render('./ePortfolio/about');
+    res.render(ePortfolioViews + "about");
 };
 
 const resume = function(req, res){
@@ -16,20 +18,20 @@ const resume = function(req, res){
       res.setHeader('WWW-Authenticate', 'Basic realm="example"');
       res.end('Access denied');
     } else {
-      res.render('./ePortfolio/resume');
+        res.render(ePortfolioViews + "resume");
     }
 };
 
 const examples = function(req, res){
-    res.render('./ePortfolio/examples');
+    res.render(ePortfolioViews + "examples");
 };
 
 const blog = function(req, res){
-    res.render('./ePortfolio/blog');
+    res.render(ePortfolioViews + "blog");
 };
 
 const contact = function(req, res){
-    res.render('./ePortfolio/contact');
+    res.render(ePortfolioViews + "contact");
 };
 
 module.exports = {

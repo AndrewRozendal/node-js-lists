@@ -6,7 +6,7 @@ const router = express.Router();
 const booksAPIController = require('../controllers/books-api');
 const othersAPIController = require('../controllers/others-api');
 const adminAPIController = require('../controllers/admin-api');
-const constructionController = require('../../app_server/controllers/construction');
+const constructionController = require('../../lists/controllers/construction');
 
 // currently under construction so only serve pages if development
 if(process.env.NODE_ENV === 'production'){

@@ -8,16 +8,16 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const subdomain = require('express-subdomain');
 
-require('./app_api/models/db');
-const listRouter = require('./app_server/routes/list_router');
-const apiRouter = require('./app_api/routes/api_router');
-const eportfolioRouter = require('./app_server/routes/eportfolio_router');
+require('./listsApi/models/db');
+const listRouter = require('./lists/routes/list_router');
+const apiRouter = require('./listsApi/routes/api_router');
+const eportfolioRouter = require('./ePortfolio/routes/eportfolio_router');
 const capstoneRouter = require('./capstoneEPortfolio/routes/capstoneRouter');
 
 const app = express();
 
 // view engine setup
-app.set('views', [path.join(__dirname, 'app_server', 'views'), path.join(__dirname, 'capstoneEPortfolio', 'views')]);
+app.set('views', [path.join(__dirname, 'ePortfolio', 'views'), path.join(__dirname, 'lists', 'views'), path.join(__dirname, 'capstoneEPortfolio', 'views')]);
 app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
