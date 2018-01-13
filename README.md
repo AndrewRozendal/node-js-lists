@@ -1,5 +1,11 @@
 [![build status](https://gitlab.camosun.bc.ca/ics211-student-projects/rozendal-lists/badges/master/build.svg)](https://gitlab.camosun.bc.ca/ics211-student-projects/rozendal-lists/commits/master)
 
+First clone:
+Because this project contains another project (https://github.com/AndrewRozendal/capstoneEPortfolio) as a git submodule, when cloning this project for the first time
+use: git clone --recursive https://github.com/AndrewRozendal/node-js-lists.git
+
+If already have the repo cloned use: git submodule update --init --recursive
+
 Useful Resources:
 
 Online Sandbox for HTML, CSS & JS (supports pug)
