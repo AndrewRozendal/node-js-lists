@@ -6,8 +6,8 @@ services:
     image: arozendal/rozendal-lists
     user: "node"
     working_dir: /home/node/app
-    environment:
-      - NODE_ENV=development
+    env_file:
+      - ./app/.env
     ports:
       - "80:3000"
     links:
