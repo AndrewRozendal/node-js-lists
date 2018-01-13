@@ -49,10 +49,18 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  if(req.subdomains[0] == 'capstone'){
+
+  // serve appropriate error page depending on subdomain 
+  // - check for both 
+  // subdomain.andrewrozendal.ca and
+  // api.subdomain.andrewrozendal.ca
+  console.log(req.subdomains);
+  if(req.subdomains[0] == 'lists' || req.subdomains[1] == 'lists'){
+    res.render('listsError');
+  } else if(req.subdomains[0] == 'capstone' || req.subdomains[1] == 'capstone'){
     res.render('capstoneError');
   } else {
-    res.render('error');
+    res.render('ePortfolioError');
   }
 });
 
