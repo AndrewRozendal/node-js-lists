@@ -6,64 +6,70 @@ const router = express.Router();
 const booksAPIController = require('../controllers/books-api');
 const othersAPIController = require('../controllers/others-api');
 const adminAPIController = require('../controllers/admin-api');
+const constructionController = require('../../app_server/controllers/construction');
 
-/* -- BOOKS -- */
-/* -- GET ALL BOOKS -- */
-router
-    .route('/books')
-    .get(booksAPIController.booksListByName);
+// currently under construction so only serve pages if development
+if(process.env.NODE_ENV === 'production'){
+    router.get('*', constructionController.home);
+} else {
+    /* -- BOOKS -- */
+    /* -- GET ALL BOOKS -- */
+    router
+        .route('/books')
+        .get(booksAPIController.booksListByName);
 
-/* -- GET BOOK DETAILS -- */
-router
-    .route('/books/book-details/:bookid')
-    .get(booksAPIController.booksReadOne);
+    /* -- GET BOOK DETAILS -- */
+    router
+        .route('/books/book-details/:bookid')
+        .get(booksAPIController.booksReadOne);
 
-/* -- GET USER READING LIST -- */
-router
-    .route('/books/reading-lists/')
-    .get(booksAPIController.readingListByName);
+    /* -- GET USER READING LIST -- */
+    router
+        .route('/books/reading-lists/')
+        .get(booksAPIController.readingListByName);
 
-/* -- ADD BOOK TO USER READING LIST -- */
-router
-    .route('/books/reading-lists/:userid/books/')
-    .post(booksAPIController.readingListAddOne);
+    /* -- ADD BOOK TO USER READING LIST -- */
+    router
+        .route('/books/reading-lists/:userid/books/')
+        .post(booksAPIController.readingListAddOne);
 
-/* -- REMOVE BOOK FROM USER READING LIST -- */
-router
-    .route('/books/reading-lists/:userid/books/:bookid')
-    .delete(booksAPIController.readingListRemoveOne);
+    /* -- REMOVE BOOK FROM USER READING LIST -- */
+    router
+        .route('/books/reading-lists/:userid/books/:bookid')
+        .delete(booksAPIController.readingListRemoveOne);
 
-/* -- REMOVE BOOK FROM USER READING LIST -- */
-router
-    .route('/books/reading-lists/:userid')
-    .delete(booksAPIController.readingListRemoveAll);
-
-
-
-/* -- OTHERS -- */
-/* -- ABOUT INFO -- */
-router
-    .route('/about')
-    .get(othersAPIController.getData);
+    /* -- REMOVE BOOK FROM USER READING LIST -- */
+    router
+        .route('/books/reading-lists/:userid')
+        .delete(booksAPIController.readingListRemoveAll);
 
 
-/* -- ADMIN -- */
-/* -- ADD A BOOK TO THE DB -- */
-router
-    .route('/admin/add-book-to-library/')
-    .post(adminAPIController.addBookToLibrary);
 
-/* -- REMOVE A BOOK FROM THE DB -- */
-router
-    .route('/admin/remove-book-from-library/:bookid')
-    .delete(adminAPIController.removeBookFromLibrary);
+    /* -- OTHERS -- */
+    /* -- ABOUT INFO -- */
+    router
+        .route('/about')
+        .get(othersAPIController.getData);
 
-/* -- CHECK ADMIN CREDENTIALS -- */
-// this needs to be last because /admin/:adminid will incorrrectly detect
-// /admin/add-book-to-library as an :adminid instead...
-router
-    .route('/admin/:adminid')
-    .post(adminAPIController.checkCredentials)
-    .get(adminAPIController.getAdminDashboard);
+
+    /* -- ADMIN -- */
+    /* -- ADD A BOOK TO THE DB -- */
+    router
+        .route('/admin/add-book-to-library/')
+        .post(adminAPIController.addBookToLibrary);
+
+    /* -- REMOVE A BOOK FROM THE DB -- */
+    router
+        .route('/admin/remove-book-from-library/:bookid')
+        .delete(adminAPIController.removeBookFromLibrary);
+
+    /* -- CHECK ADMIN CREDENTIALS -- */
+    // this needs to be last because /admin/:adminid will incorrrectly detect
+    // /admin/add-book-to-library as an :adminid instead...
+    router
+        .route('/admin/:adminid')
+        .post(adminAPIController.checkCredentials)
+        .get(adminAPIController.getAdminDashboard);
+}
 
 module.exports = router;
