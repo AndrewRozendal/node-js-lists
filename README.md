@@ -1,20 +1,21 @@
-[![build status](https://gitlab.camosun.bc.ca/ics211-student-projects/rozendal-lists/badges/master/build.svg)](https://gitlab.camosun.bc.ca/ics211-student-projects/rozendal-lists/commits/master)
-
-First clone:
+Introduction
+==============
+## First clone:
 Because this project contains another project (https://github.com/AndrewRozendal/capstoneEPortfolio) as a git submodule, when cloning this project for the first time
-use: git clone --recursive https://github.com/AndrewRozendal/node-js-lists.git
+use:  
+
+`git clone --recursive https://github.com/AndrewRozendal/node-js-lists.git`
 
 If already have the repo cloned use: git submodule update --init --recursive
 
-Useful Resources:
+## .env File:
+You must create a .env file in /app/ with the following content:
+Note: gitignore will ignore all .env files in the project since they contain credentials.
 
-Online Sandbox for HTML, CSS & JS (supports pug)
-https://codepen.io/pen/
+`NODE_ENV:production` or `NODE_ENV:development`
 
-Pug Generator
-http://html2jade.org/
 
-Routes:
+## Routes:
 
 Lists: lists.andrewrozendal.ca
 
@@ -56,19 +57,22 @@ API Layouts:
 |            |List all books that can be removed      |GET         |/api/books                                      | Yes           |
 |            |Remove book from database               |DELETE      |/api/admin/remove-book-from-library/:bookid     | Yes           |
 
-When updating DB, need to run following commands for remote deploy:
+## Miscellaneous:
 
-1. winpty docker exec -it mongo bash
-2. cd docker-entrypoint-initdb.d
-3. mongodump --archive=dump.gz --gzip --db rozendal-lists
-4. git commit & push to master
+### Useful Resources:
 
-To add npm module:
-winpty docker exec -it node bash
-npm install packageName --save
+Online Sandbox for HTML, CSS & JS (supports pug)
+https://codepen.io/pen/
 
-For local development:
-With subdomains, needed to add following to hosts file:
-127.0.0.1	localhost.local
-127.0.0.1	lists.localhost.local
-127.0.0.1	api.localhost.local
+Pug Generator
+http://html2jade.org/
+
+### To add npm module:  
+`winpty docker exec -it node bash
+npm install packageName --save`
+
+### For local development:  
+With subdomains, needed to add following to hosts file:  
+`127.0.0.1	localhost.local`  
+`127.0.0.1	lists.localhost.local`  
+`127.0.0.1	api.localhost.local`  
