@@ -11,15 +11,19 @@ If already have the repo cloned use:
 `git submodule update --init --recursive`
 
 ## .env File:
-You must create a .env file in /app/ with the following content:
+You must create a .env file in the root directory with the following content:
 Note: gitignore will ignore all .env files in the project since they contain credentials.
 
-`NODE_ENV:production` or `NODE_ENV:development`
+`NODE_ENV:` Either `production` or `development`  
+`NODE_PORT:` Either `443` or `80`  Note: 443 will not work with local dev since there are no certificates!  
 
+### .env contents for local development:
+`NODE_ENV:development`  
+`NODE_PORT:80`
 
 ## Routes:
 
-Lists: lists.andrewrozendal.ca
+### Lists: lists.andrewrozendal.ca
 
 | Controller | Page / Screen                          | URL Endpoint                        | Implemented    | Remarks |
 | ---------- |----------------------------------------|-------------------------------------| ---------------|---------|
@@ -32,7 +36,7 @@ Lists: lists.andrewrozendal.ca
 |            |Add book to the database                |/admin/add-book-to-library/          | Yes            |
 |            |Remove book from database               |/admin/remove-book-from-library/     | Yes            |
 
-E-Portfolio: andrewrozendal.ca
+### E-Portfolio: andrewrozendal.ca
 
 | Controller | Page / Screen                          | URL Endpoint                        | Implemented    | Remarks |
 | ---------- |----------------------------------------|-------------------------------------| ---------------|---------|
@@ -43,7 +47,7 @@ E-Portfolio: andrewrozendal.ca
 | ePortfolio | Blog | /blog | No | |
 | ePortfolio | Contact Me | /contact | Yes | |
 
-API Layouts:
+### API Layouts:
 
 | Controller | Page / Screen                          | HTTP VERB  | API URL Endpoint                               | Implemented   | Remarks |
 | ---------- |----------------------------------------| -----------|------------------------------------------------| --------------|---------|
@@ -70,8 +74,8 @@ Pug Generator
 http://html2jade.org/
 
 ### To add npm module:  
-`winpty docker exec -it node bash
-npm install packageName --save`
+`winpty docker exec -it node bash`  
+`npm install packageName --save`  
 
 ### For local development:  
 With subdomains, needed to add following to hosts file:  
