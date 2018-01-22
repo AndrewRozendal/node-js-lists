@@ -6,7 +6,9 @@ use:
 
 `git clone --recursive https://github.com/AndrewRozendal/node-js-lists.git`
 
-If already have the repo cloned use: git submodule update --init --recursive
+If already have the repo cloned use:  
+
+`git submodule update --init --recursive`
 
 ## .env File:
 You must create a .env file in /app/ with the following content:
