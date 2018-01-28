@@ -25,6 +25,14 @@ Note: gitignore will ignore all .env files in the project since they contain cre
 Nginx handles the http to https automatic routing.  The config file used on the server is stored for convienience in this project in /nginx/sites-available/default.  
 NOTE: You must update the server file, NOT the file in this project -- it is only here for reference.
 
+Helpful Nginx variable guide: `http://nginx.org/en/docs/http/ngx_http_core_module.html`
+
+### Lets Encrypt setup:
+To update the certificate manually use:
+`sudo certbot --authenticator standalone --installer nginx -d andrewrozendal.ca -d www.andrewrozendal.ca -d api.andrewrozendal.ca -d capstone.andrewrozendal.ca -d api.capstone.andrewrozendal.ca -d lists.andrewrozendal.ca -d api.lists.andrewrozendal.ca --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"`
+
+Remember - DigitalOcean DNS A/AAAA records must be updated first.
+
 ## Routes:
 
 ### Lists: lists.andrewrozendal.ca
