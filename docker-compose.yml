@@ -4,7 +4,7 @@ services:
     container_name: node
     build: ./node
     image: arozendal/rozendal-lists
-    user: "root"
+    user: "node"
     working_dir: /home/node/app
     env_file:
       - ./.env
@@ -14,7 +14,6 @@ services:
       - db
     volumes:
       - ./app:/home/node/app
-      - /etc/letsencrypt/:/etc/letsencrypt
     command: "nodemon -L"
   db:
     container_name: mongo

@@ -15,11 +15,15 @@ You must create a .env file in the root directory with the following content:
 Note: gitignore will ignore all .env files in the project since they contain credentials.
 
 `NODE_ENV:` Either `production` or `development`  
-`NODE_PORT:` Either `443` or `80`  Note: 443 will not work with local dev since there are no certificates!  
+`NODE_PORT:` Production requires `8080` - this is what Nginx will try to connect to.  This can be whatever you desire on local.  
 
 ### .env contents for local development:
 `NODE_ENV:development`  
 `NODE_PORT:80`
+
+### Nginx:
+Nginx handles the http to https automatic routing.  The config file used on the server is stored for convienience in this project in /nginx/sites-available/default.  
+NOTE: You must update the server file, NOT the file in this project -- it is only here for reference.
 
 ## Routes:
 
