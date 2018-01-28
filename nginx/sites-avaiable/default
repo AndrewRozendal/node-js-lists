@@ -1,0 +1,81 @@
+##
+# You should look at the following URL's in order to grasp a solid understanding
+# of Nginx configuration files in order to fully unleash the power of Nginx.
+# http://wiki.nginx.org/Pitfalls
+# http://wiki.nginx.org/QuickStart
+# http://wiki.nginx.org/Configuration
+#
+# Generally, you will want to move this file somewhere, and start with a clean
+# file but keep this around for reference. Or just disable in sites-enabled.
+#
+# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+##
+
+
+# lists.andrewrozendal.ca
+server {
+	listen 80;
+
+	server_name lists.andrewrozendal.ca;
+
+	location / {
+		# Point all requests to the docker container on 8080
+		proxy_pass http://lists.andrewrozendal.ca:8080;
+	}
+
+	listen 443 ssl; # managed by Certbot
+	ssl_certificate /etc/letsencrypt/live/andrewrozendal.ca/fullchain.pem; # managed by Certbot
+	ssl_certificate_key /etc/letsencrypt/live/andrewrozendal.ca/privkey.pem; # managed by Certbot
+	include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+	if ($scheme != "https") {
+		return 301 https://$host$request_uri;
+	} # managed by Certbot
+}
+
+# capstone.andrewrozendal.ca
+server {
+	listen 80;
+
+	server_name capstone.andrewrozendal.ca;
+
+	location / {
+		# Point all requests to the docker container on 8080
+		proxy_pass http://capstone.andrewrozendal.ca:8080;
+	}
+
+	listen 443 ssl; # managed by Certbot
+	ssl_certificate /etc/letsencrypt/live/andrewrozendal.ca/fullchain.pem; # managed by Certbot
+	ssl_certificate_key /etc/letsencrypt/live/andrewrozendal.ca/privkey.pem; # managed by Certbot
+	include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+	if ($scheme != "https") {
+		return 301 https://$host$request_uri;
+	} # managed by Certbot
+}
+
+# andrewrozendal.ca www.andrewrozendal.ca
+server {
+	listen 80 default_server;
+
+	server_name andrewrozendal.ca www.andrewrozendal.ca;
+
+	location / {
+		# Point all requests to the docker container on 8080
+		proxy_pass http://andrewrozendal.ca:8080;
+	}
+
+	listen 443 ssl; # managed by Certbot
+	ssl_certificate /etc/letsencrypt/live/andrewrozendal.ca/fullchain.pem; # managed by Certbot
+	ssl_certificate_key /etc/letsencrypt/live/andrewrozendal.ca/privkey.pem; # managed by Certbot
+	include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+	if ($scheme != "https") {
+		return 301 https://$host$request_uri;
+	} # managed by Certbot
+}
+
+

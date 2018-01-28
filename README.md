@@ -11,15 +11,31 @@ If already have the repo cloned use:
 `git submodule update --init --recursive`
 
 ## .env File:
-You must create a .env file in /app/ with the following content:
+You must create a .env file in the root directory with the following content:
 Note: gitignore will ignore all .env files in the project since they contain credentials.
 
-`NODE_ENV:production` or `NODE_ENV:development`
+`NODE_ENV:` Either `production` or `development`  
+`NODE_PORT:` Production requires `8080` - this is what Nginx will try to connect to.  This can be whatever you desire on local.  
 
+### .env contents for local development:
+`NODE_ENV:development`  
+`NODE_PORT:80`
+
+### Nginx:
+Nginx handles the http to https automatic routing.  The config file used on the server is stored for convienience in this project in /nginx/sites-available/default.  
+NOTE: You must update the server file, NOT the file in this project -- it is only here for reference.
+
+Helpful Nginx variable guide: `http://nginx.org/en/docs/http/ngx_http_core_module.html`
+
+### Lets Encrypt setup:
+To update the certificate manually use:
+`sudo certbot --authenticator standalone --installer nginx -d andrewrozendal.ca -d www.andrewrozendal.ca -d api.andrewrozendal.ca -d capstone.andrewrozendal.ca -d api.capstone.andrewrozendal.ca -d lists.andrewrozendal.ca -d api.lists.andrewrozendal.ca --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"`
+
+Remember - DigitalOcean DNS A/AAAA records must be updated first.
 
 ## Routes:
 
-Lists: lists.andrewrozendal.ca
+### Lists: lists.andrewrozendal.ca
 
 | Controller | Page / Screen                          | URL Endpoint                        | Implemented    | Remarks |
 | ---------- |----------------------------------------|-------------------------------------| ---------------|---------|
@@ -32,7 +48,7 @@ Lists: lists.andrewrozendal.ca
 |            |Add book to the database                |/admin/add-book-to-library/          | Yes            |
 |            |Remove book from database               |/admin/remove-book-from-library/     | Yes            |
 
-E-Portfolio: andrewrozendal.ca
+### E-Portfolio: andrewrozendal.ca
 
 | Controller | Page / Screen                          | URL Endpoint                        | Implemented    | Remarks |
 | ---------- |----------------------------------------|-------------------------------------| ---------------|---------|
@@ -43,7 +59,7 @@ E-Portfolio: andrewrozendal.ca
 | ePortfolio | Blog | /blog | No | |
 | ePortfolio | Contact Me | /contact | Yes | |
 
-API Layouts:
+### API Layouts:
 
 | Controller | Page / Screen                          | HTTP VERB  | API URL Endpoint                               | Implemented   | Remarks |
 | ---------- |----------------------------------------| -----------|------------------------------------------------| --------------|---------|
@@ -70,8 +86,8 @@ Pug Generator
 http://html2jade.org/
 
 ### To add npm module:  
-`winpty docker exec -it node bash
-npm install packageName --save`
+`winpty docker exec -it node bash`  
+`npm install packageName --save`  
 
 ### For local development:  
 With subdomains, needed to add following to hosts file:  
