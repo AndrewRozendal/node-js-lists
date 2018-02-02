@@ -32,7 +32,7 @@ h2{
     color:#495057
 }
 .list-social-icons a:hover{
-    color:#bd5d38
+    color:#00507c
 }
 .list-social-icons a .fa-lg{
     font-size:1.75rem
@@ -41,7 +41,7 @@ h2{
     font-size:3rem
 }
 .list-icons .list-inline-item i:hover{
-    color:#bd5d38
+    color:#00507c
 }
 #sideNav .navbar-nav .nav-item .nav-link{
     font-weight:600;
@@ -109,13 +109,13 @@ section.resume-section .resume-item .resume-date{
     }
 }
 .bg-primary{
-    background-color:#bd5d38!important
+    background-color:#00507c!important
 }
 .text-primary{
-    color:#bd5d38!important
+    color:#00507c!important
 }
 a{
-    color:#bd5d38
+    color:#00507c
 }
 a:active,a:focus,a:hover{
     color:#824027
