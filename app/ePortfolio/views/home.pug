@@ -1,11 +1,165 @@
-extends ePortfolioLayout
+doctype html
+html
+  head
+    title= title
+    //- Font-Awesome https://bootstrapcdn.com/fontawesome/
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+    //- Twitter Bootstrap http://getbootstrap.com/
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css', integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin='anonymous')
+    link(rel='stylesheet', href='/stylesheets/resume.css')
+    //- shrink-to-fit=no is needed for the Safari browser
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+     
+  body#page-top
+    nav#sideNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
+      a.navbar-brand.js-scroll-trigger(href='#page-top')
+        span.d-block.d-lg-none Start Bootstrap
+        span.d-none.d-lg-block
+          img.img-fluid.img-profile.rounded-circle.mx-auto.mb-2(src='/images/ePortfolio/profilepic.jpg', alt='')
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#about') About
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#education') Education
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#skills') Skills
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#examples') Examples
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#interests') Interests
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#awards') Awards
+    .container-fluid.p-0
+      section#about.resume-section.p-3.p-lg-5.d-flex.d-column
+        .my-auto
+          h1.mb-0
+            | Andrew
+            span.text-primary Rozendal
+          p.mb-5
+            | Elevator speech goes here
+          ul.list-inline.list-social-icons.mb-0
+            li.list-inline-item
+              a(href='http://linkedin.com/in/Andrew-Rozendal')
+                span.fa-stack.fa-lg
+                  i.fa.fa-circle.fa-stack-2x
+                  i.fa.fa-linkedin.fa-stack-1x.fa-inverse
+            li.list-inline-item
+              a(href='http://github.com/AndrewRozendal')
+                span.fa-stack.fa-lg
+                  i.fa.fa-circle.fa-stack-2x
+                  i.fa.fa-github.fa-stack-1x.fa-inverse
+      section#education.resume-section.p-3.p-lg-5.d-flex.flex-column
+        .my-auto
+          h2.mb-5 Education
+          .resume-item.d-flex.flex-column.flex-md-row
+            .resume-content.mr-auto
+              h3.mb-0 Camosun College
+              .subheading.mb-3 Information and Computer Studies (ICS)
+              div Computer Science
+            .resume-date.text-md-right
+              span.text-primary 2019
+          .resume-item.d-flex.flex-column.flex-md-row.mb-5
+            .resume-content.mr-auto
+              h3.mb-0 University of Victoria
+              .subheading.mb-3 Bachelor of Arts
+              div Greek and Roman Studies
+            .resume-date.text-md-right
+              span.text-primary 2014
+      section#skills.resume-section.p-3.p-lg-5.d-flex.flex-column
+        .my-auto
+          h2.mb-5 Skills
+          .subheading.mb-3 Programming Languages & Tools
+          ul.fa-ul.mb-0 
+            li
+              i.fa-li.fa.fa-check 
+              |               Python
+            li
+              i.fa-li.fa.fa-check 
+              |                C#
+            li
+              i.fa-li.fa.fa-check 
+              |                Java
+            li
+              i.fa-li.fa.fa-check 
+              |                Javascript
+            li
+              i.fa-li.fa.fa-check 
+              |                SQL
+            li
+              i.fa-li.fa.fa-check 
+              |                C
+            li
+              i.fa-li.fa.fa-check 
+              |                C++
+            li
+              i.fa-li.fa.fa-check 
+              |                Swift
+          .subheading.mb-3 Other Skills
+          ul.fa-ul.mb-0
+            li
+              i.fa-li.fa.fa-check
+              |               Project Management - Gantt Charts, Project Management Plans
+      section#examples.resume-section.p-3.p-lg-5.d-flex.flex-column
+        .my-auto
+          h2.mb-5 Examples
+          .resume-item.d-flex.flex-column.flex-md-row.mb-5
+            .resume-content.mr-auto
+              h3.mb-0 Senior Web Developer
+              .subheading.mb-3 Intelitec Solutions
+              p
+                | Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+            .resume-date.text-md-right
+              span.text-primary March 2013 - Present
+          .resume-item.d-flex.flex-column.flex-md-row.mb-5
+            .resume-content.mr-auto
+              h3.mb-0 Web Developer
+              .subheading.mb-3 Intelitec Solutions
+              p
+                | Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+            .resume-date.text-md-right
+              span.text-primary December 2011 - March 2013
+          .resume-item.d-flex.flex-column.flex-md-row.mb-5
+            .resume-content.mr-auto
+              h3.mb-0 Junior Web Designer
+              .subheading.mb-3 Shout! Media Productions
+              p
+                | Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.
+            .resume-date.text-md-right
+              span.text-primary July 2010 - December 2011
+          .resume-item.d-flex.flex-column.flex-md-row
+            .resume-content.mr-auto
+              h3.mb-0 Web Design Intern
+              .subheading.mb-3 Shout! Media Productions
+              p
+                | Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
+            .resume-date.text-md-right
+              span.text-primary September 2008 - June 2010
+      section#interests.resume-section.p-3.p-lg-5.d-flex.flex-column
+        .my-auto
+          h2.mb-5 Interests
+          p
+            | Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skiier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.
+          p.mb-0
+            | When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technolgy advancements in the front-end web development world.
+      section#awards.resume-section.p-3.p-lg-5.d-flex.flex-column
+        .my-auto
+          h2.mb-5 Awards & Certifications
+          ul.fa-ul.mb-0
+            li
+              i.fa-li.fa.fa-trophy.text-warning
+              |               Dean's List - Camosun College
+            li
+              i.fa-li.fa.fa-trophy.text-warning
+              |               Daniel Sim First Year Award - Camosun College
 
-block content
-  .row
-    .book-details.col-12.col-xl-8
-      h2 Welcome to my E-Portfolio!
-      p My name is Andrew Rozendal and I'm currently studying computer programming at Camosun College. I'm excited by the future programming challenges that I will face during my career! I look forward to learning elegant solutions to complex problems and working as a member of a team to overcome new obstacles. Hopefully you'll find that I will make a valuable addition to your team.
-      p Thank you for taking the time to stop by.
-      p Please feel free to contact me if you have any questions.
-    .side-bar-text.col-12.col-xl-4.pt-5
-      img(src="/images/ePortfolio/profilepic.jpg", alt='Profile picture of me', style='width:20em;height:20em;margin:auto')
+    footer.fixed-bottom.nav-header-bg.text-right.py-2
+      .container-fluid
+        - let d = new Date();
+        .ca-footer-text &copy;2017 - #{d.getFullYear()} Andrew Rozendal
+    //- Scripts required for twitter bootstrap
+    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js", integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh", crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js", integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ", crossorigin="anonymous")
