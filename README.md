@@ -14,12 +14,18 @@ If already have the repo cloned use:
 You must create a .env file in the root directory with the following content:
 Note: gitignore will ignore all .env files in the project since they contain credentials.
 
-`NODE_ENV:` Either `production` or `development`  
-`NODE_PORT:` Production requires `8080` - this is what Nginx will try to connect to.  This can be whatever you desire on local.  
+`NODE_ENV=` Either `production` or `development`  
+`NODE_PORT=` Production requires `8080` - this is what Nginx will try to connect to.  This can be whatever you desire on local.  
 
 ### .env contents for local development:
-`NODE_ENV:development`  
-`NODE_PORT:80`
+`NODE_ENV=development`  
+`NODE_PORT=80`
+
+### Dealing with subdomains in local development:  
+With subdomains, needed to add following to hosts file:  
+`127.0.0.1	localhost.local`  
+`127.0.0.1	lists.localhost.local`  
+`127.0.0.1	api.localhost.local`  
 
 ### Nginx:
 Nginx handles the http to https automatic routing.  The config file used on the server is stored for convienience in this project in /nginx/sites-available/default.  
@@ -35,6 +41,13 @@ Remember - DigitalOcean DNS A/AAAA records must be updated first.
 
 ## Routes:
 
+### E-Portfolio: andrewrozendal.ca
+
+| Controller | Page / Screen                          | URL Endpoint                        | Implemented    | Remarks |
+| ---------- |----------------------------------------|-------------------------------------| ---------------|---------|
+| ePortfolio | Home Page | / | Yes | |
+| ePortfolio | Resume | /resume | Yes | |
+
 ### Lists: lists.andrewrozendal.ca
 
 | Controller | Page / Screen                          | URL Endpoint                        | Implemented    | Remarks |
@@ -47,17 +60,6 @@ Remember - DigitalOcean DNS A/AAAA records must be updated first.
 | Admin      |Admin Home Page                         |/admin/                              | Partially      | No Login
 |            |Add book to the database                |/admin/add-book-to-library/          | Yes            |
 |            |Remove book from database               |/admin/remove-book-from-library/     | Yes            |
-
-### E-Portfolio: andrewrozendal.ca
-
-| Controller | Page / Screen                          | URL Endpoint                        | Implemented    | Remarks |
-| ---------- |----------------------------------------|-------------------------------------| ---------------|---------|
-| ePortfolio | Home Page | / | Yes | |
-| ePortfolio | About Me | /about | Yes | |
-| ePortfolio | Resume | /resume | Yes | |
-| ePortfolio | Examples | /examples | Yes | |
-| ePortfolio | Blog | /blog | No | |
-| ePortfolio | Contact Me | /contact | Yes | |
 
 ### API Layouts:
 
@@ -88,9 +90,3 @@ http://html2jade.org/
 ### To add npm module:  
 `winpty docker exec -it node bash`  
 `npm install packageName --save`  
-
-### For local development:  
-With subdomains, needed to add following to hosts file:  
-`127.0.0.1	localhost.local`  
-`127.0.0.1	lists.localhost.local`  
-`127.0.0.1	api.localhost.local`  

@@ -1,11 +1,132 @@
 extends ePortfolioLayout
 
 block content
-  .row
-    .book-details.col-12.col-xl-8
-      h2 Welcome to my E-Portfolio!
-      p My name is Andrew Rozendal and I'm currently studying computer programming at Camosun College. I'm excited by the future programming challenges that I will face during my career! I look forward to learning elegant solutions to complex problems and working as a member of a team to overcome new obstacles. Hopefully you'll find that I will make a valuable addition to your team.
-      p Thank you for taking the time to stop by.
-      p Please feel free to contact me if you have any questions.
-    .side-bar-text.col-12.col-xl-4.pt-5
-      img(src="/images/ePortfolio/profilepic.jpg", alt='Profile picture of me', style='width:20em;height:20em;margin:auto')
+    nav#sideNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
+      a.navbar-brand.js-scroll-trigger(href='#page-top')
+        span.d-block.d-lg-none Andrew Rozendal
+        span.d-none.d-lg-block
+          img.img-fluid.img-profile.rounded-circle.mx-auto.mb-2(src='/images/ePortfolio/profilepic.jpg', alt='')
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#about') About
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#education') Education
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#skills') Skills
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#examples') Examples
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#interests') Interests
+          li.nav-item
+            a.nav-link.js-scroll-trigger(href='#awards') Awards
+          li.nav-item
+            a.nav-link(href='/resume') My Resume
+    .container-fluid.p-0
+      section#about.resume-section.p-3.p-lg-5.d-flex.d-column
+        .my-auto
+          h1.mb-0.resizeme
+            | Andrew
+            span.text-primary Rozendal
+          p.mb-0
+            | A soon to be graduate of the Information and Computer Studies program at Camosun College,
+          p.mb-5
+            | Andrew hopes to start an internship with a local Victoria company and get started making quality software.
+          ul.list-inline.list-social-icons.mb-0
+            li.list-inline-item
+              a(href='http://linkedin.com/in/Andrew-Rozendal')
+                span.fa-stack.fa-lg
+                  i.fa.fa-circle.fa-stack-2x
+                  i.fa.fa-linkedin.fa-stack-1x.fa-inverse
+            li.list-inline-item
+              a(href='http://github.com/AndrewRozendal')
+                span.fa-stack.fa-lg
+                  i.fa.fa-circle.fa-stack-2x
+                  i.fa.fa-github.fa-stack-1x.fa-inverse
+      section#education.resume-section.p-3.p-lg-5.d-flex.flex-column
+        .my-auto
+          h2.mb-5 Education
+          .resume-item.d-flex.flex-column.flex-md-row
+            .resume-content.mr-auto
+              h3.mb-0 Camosun College
+              .subheading.mb-3 Diploma in Information and Computer Studies (ICS)
+              div Computer Science
+            .resume-date.text-md-right
+              span.text-primary 2019
+          .resume-item.d-flex.flex-column.flex-md-row.my-5
+            .resume-content.mr-auto
+              h3.mb-0 University of Victoria
+              .subheading.mb-3 Bachelor of Arts in Greek and Roman Studies
+              div Classical History with a focus on the political structure of the Roman Empire
+            .resume-date.text-md-right
+              span.text-primary 2014
+      section#skills.resume-section.p-3.p-lg-5.d-flex.flex-column
+        .my-auto
+          h2.mb-5 Skills
+          .subheading.mb-3 Programming Languages & Tools
+          ul.fa-ul.mb-0 
+            li
+              i.fa-li.fa.fa-check 
+              |               Python
+            li
+              i.fa-li.fa.fa-check 
+              |                C#
+            li
+              i.fa-li.fa.fa-check 
+              |                Java
+            li
+              i.fa-li.fa.fa-check 
+              |                Javascript
+            li
+              i.fa-li.fa.fa-check 
+              |                SQL
+            li
+              i.fa-li.fa.fa-check 
+              |                C
+            li
+              i.fa-li.fa.fa-check 
+              |                C++
+            li
+              i.fa-li.fa.fa-check 
+              |                Swift
+          .subheading.my-3 Other Skills
+          ul.fa-ul.mb-0
+            li
+              i.fa-li.fa.fa-check
+              |               Project Management - Gantt Charts, Project Management Plans
+      section#examples.resume-section.p-3.p-lg-5.d-flex.flex-column
+        .my-auto
+          h2.mb-5 Examples
+          .resume-item.d-flex.flex-column.flex-md-row.mb-5
+            .resume-content.mr-auto
+              h3.mb-0 Microsoft Hololens Capstone Project
+              .subheading.mb-3 Converting CAD files to be displayed in Augmented Reality
+              p
+                | Currently gathering requirements and developing a Project Management Plan for my Capstone project.  The project entails converting CAD files into a format that the Microsoft Hololens can display in Augmented Reality.  My team will develop two applications: the first will handle file conversion while the second will be the Hololens application itself.  Check out our webpage at #[a(href="https://capstone.andrewrozendal.ca") capstone.andrewrozendal.ca ] for more info.
+            .resume-date.text-md-right
+              span.text-primary Jan 2018 - Present
+          .resume-item.d-flex.flex-column.flex-md-row.mb-5
+            .resume-content.mr-auto
+              h3.mb-0 Webserver with REST API
+              .subheading.mb-3 Web Scripting Course
+              p
+                | What started as an assingment in a Web Scripting course, the #[a(href="https://lists.andrewrozendal.ca") lists.andrewrozendal.ca ] project has turned into a hobby project.  It uses the MEAN stack (MongoDB, Express, Angular and NodeJS).
+            .resume-date.text-md-right
+              span.text-primary Sept 2017 - Present
+      section#interests.resume-section.p-3.p-lg-5.d-flex.flex-column
+        .my-auto
+          h2.mb-5 Interests
+          p
+            | I enjoy sailing, reading History books, and playing strategy games - both on and off the computer.
+      section#awards.resume-section.p-3.p-lg-5.d-flex.flex-column
+        .my-auto
+          h2.mb-5 Awards & Certifications
+          ul.fa-ul.mb-0
+            li
+              i.fa-li.fa.fa-trophy.text-warning
+              |               Dean's List - Camosun College
+            li
+              i.fa-li.fa.fa-trophy.text-warning
+              |               Daniel Sim First Year Award - Camosun College
