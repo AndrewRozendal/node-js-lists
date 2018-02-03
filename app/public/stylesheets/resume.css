@@ -120,3 +120,15 @@ a{
 a:active,a:focus,a:hover{
     color:#824027
 }
+
+@media screen and (max-width: 568px){
+    .resizeme {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 992px){
+    .resizeme {
+        font-size: 3rem;
+    }
+}
