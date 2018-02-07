@@ -8,7 +8,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const subdomain = require('express-subdomain');
 
-require('./listsApi/models/db');
+require('./listsApi/models/db');  // Lists Database
+require('./capstoneEPortfolio/models/db');  // Capstone Database
+
 const listRouter = require('./lists/routes/list_router');
 const apiRouter = require('./listsApi/routes/api_router');
 const eportfolioRouter = require('./ePortfolio/routes/eportfolio_router');
