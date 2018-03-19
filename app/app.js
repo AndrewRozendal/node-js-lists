@@ -9,15 +9,15 @@ const bodyParser = require('body-parser');
 const subdomain = require('express-subdomain');
 
 require('./listsApi/models/db');
+
 const listRouter = require('./lists/routes/list_router');
 const apiRouter = require('./listsApi/routes/api_router');
 const eportfolioRouter = require('./ePortfolio/routes/eportfolio_router');
-const capstoneRouter = require('./capstoneEPortfolio/routes/capstoneRouter');
 
 const app = express();
 
 // view engine setup
-app.set('views', [path.join(__dirname, 'ePortfolio', 'views'), path.join(__dirname, 'lists', 'views'), path.join(__dirname, 'capstoneEPortfolio', 'views')]);
+app.set('views', [path.join(__dirname, 'ePortfolio', 'views'), path.join(__dirname, 'lists', 'views')]);
 app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
@@ -27,10 +27,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'capstoneEPortfolio', 'public')));
 
 app.use(subdomain('lists', listRouter));
-app.use(subdomain('capstone', capstoneRouter));
 app.use('/api', apiRouter);
 app.use('/', eportfolioRouter);
 
@@ -57,8 +55,6 @@ app.use(function(err, req, res, next) {
   console.log(req.subdomains);
   if(req.subdomains[0] == 'lists' || req.subdomains[1] == 'lists'){
     res.render('listsError');
-  } else if(req.subdomains[0] == 'capstone' || req.subdomains[1] == 'capstone'){
-    res.render('capstoneError');
   } else {
     res.render('ePortfolioError');
   }

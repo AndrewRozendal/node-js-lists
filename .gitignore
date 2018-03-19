@@ -31,3 +31,6 @@ npm-debug.log
 
 # Environment Variables
 .env
+
+# Mac file extensions
+.DS_Store
