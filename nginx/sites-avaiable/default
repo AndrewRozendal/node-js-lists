@@ -41,8 +41,8 @@ server {
 	server_name capstone.andrewrozendal.ca;
 
 	location / {
-		# Point all requests to the docker container on 8080
-		proxy_pass http://capstone.andrewrozendal.ca:8080;
+		# Point all requests to the docker container on 8085
+		proxy_pass http://capstone.andrewrozendal.ca:8085;
 	}
 
 	listen 443 ssl; # managed by Certbot
